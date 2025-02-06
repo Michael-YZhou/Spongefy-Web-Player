@@ -23,6 +23,8 @@ export default tseslint.config(
         'warn',
         { allowConstantExport: true },
       ],
+      '@typescript-eslint/no-var-required': 'true', // Disallow the use of variables that are not declared using const, let, or var
+      '@typescript-eslint/no-explicit-any': 'off', // Allow explicit any
     },
   },
 );
