@@ -7,7 +7,7 @@ interface ICollection {
 }
 
 const Collection: FC<ICollection> = () => {
-  return <div>My</div>;
+  return <div>Collection</div>;
 };
 
 export default memo(Collection);
