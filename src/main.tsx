@@ -1,4 +1,7 @@
-import { createRoot } from "react-dom/client";
-import App from "./App.tsx";
+import { createRoot } from 'react-dom/client';
+import 'normalize.css';
+import '@/assets/css/index.less';
 
-createRoot(document.getElementById("root")!).render(<App />);
+import App from '@/App.tsx';
+
+createRoot(document.getElementById('root')!).render(<App />);
