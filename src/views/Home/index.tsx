@@ -1,7 +1,7 @@
 import { memo, Suspense } from 'react';
 import { FC, ReactNode } from 'react';
 import { Outlet } from 'react-router-dom';
-import Navigation from '../Navigation';
+import Navigation from '../../components/Navigation';
 
 interface ILayout {
   children?: ReactNode;
