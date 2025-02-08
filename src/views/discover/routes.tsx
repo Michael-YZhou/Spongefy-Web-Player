@@ -16,7 +16,7 @@ const discoverDefault: IRoute = {
   path: '/discover',
   element: <Navigate to="/discover/recommend" />,
   isPrivate: false,
-  label: 'DiscoverDefault',
+  label: 'Default',
 };
 
 // Define child routes

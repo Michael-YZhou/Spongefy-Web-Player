@@ -6,11 +6,31 @@ export interface IRoute {
   path: string;
   element: ReactNode;
   isPrivate: boolean;
-  // (Optional) A human-friendly label for the navigation link
-  label?: string;
+  // A human-friendly label for the navigation link
+  label: string;
   // (Optional) Nested child routes
   children?: IRoute[];
 }
+
+// Function to create a route
+export const createRoute = (
+  path: string,
+  element: ReactNode,
+  isPrivate: boolean,
+  label: string,
+  children: IRoute[],
+): IRoute => ({
+  path,
+  element,
+  isPrivate,
+  label,
+  children,
+});
+
+// Function to create an array of routes
+export const createRouteArray = (...routes: IRoute[]): IRoute[] => {
+  return routes;
+};
 
 // Map routes to RouteObject
 export const mapRoutes = (routes: IRoute[]): RouteObject[] =>
@@ -23,6 +43,5 @@ export const mapRoutes = (routes: IRoute[]): RouteObject[] =>
     if (children) {
       routeObject.children = mapRoutes(children);
     }
-
     return routeObject;
   });

@@ -1,31 +1,14 @@
-import { Link } from 'react-router-dom';
-import { memo } from 'react';
-import { FC, ReactNode } from 'react';
+import { memo, FC, ReactNode } from 'react';
+import { IRoute } from '@/services/routing/RoutingService';
+import { renderNavigation } from '@/services/navigation/NavigationService';
 
 interface INavigation {
   children?: ReactNode;
-  // TODO
+  routes: IRoute[];
 }
 
-const Navigation: FC<INavigation> = () => {
-  return (
-    <nav>
-      <ul>
-        <li>
-          <Link to="/discover">Discover</Link>
-        </li>
-        <li>
-          <Link to="/collection">Collection</Link>
-        </li>
-        <li>
-          <Link to="/follow">Follow</Link>
-        </li>
-        <li>
-          <Link to="/download">Download</Link>
-        </li>
-      </ul>
-    </nav>
-  );
+const Navigation: FC<INavigation> = ({ routes }) => {
+  return <nav>{renderNavigation(routes)}</nav>;
 };
 
 export default memo(Navigation);

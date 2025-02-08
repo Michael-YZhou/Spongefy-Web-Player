@@ -10,7 +10,7 @@ const homeDefault: IRoute = {
   path: '/',
   element: <Navigate to="/discover" />,
   isPrivate: false,
-  label: 'HomeDefault',
+  label: 'Default',
 };
 
 const HomeChildren: IRoute[] = [
@@ -21,12 +21,10 @@ const HomeChildren: IRoute[] = [
   downloadRoute,
 ];
 
-export const homeRoutes: IRoute[] = [
-  {
-    path: '/',
-    element: <Home />,
-    isPrivate: false,
-    children: HomeChildren,
-    label: 'Home',
-  },
-];
+export const homeRoute: IRoute = {
+  path: '/',
+  element: <Home />,
+  isPrivate: false,
+  children: HomeChildren,
+  label: 'Home',
+};

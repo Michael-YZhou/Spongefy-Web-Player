@@ -1,18 +1,21 @@
 import { memo, Suspense } from 'react';
 import { FC, ReactNode } from 'react';
 import { Outlet } from 'react-router-dom';
+import { homeRoute } from './routes';
 import Navigation from '../../components/Navigation';
 
-interface ILayout {
+interface IHome {
   children?: ReactNode;
   // TODO
 }
 
-const Layout: FC<ILayout> = () => {
+const Home: FC<IHome> = () => {
+  const routes = homeRoute.children!;
+
   return (
     <div>
       {/* Navigation Bar */}
-      <Navigation />
+      <Navigation routes={routes} />
       {/* Render Routed Content Below */}
       <Suspense fallback="">
         <Outlet />
@@ -21,4 +24,4 @@ const Layout: FC<ILayout> = () => {
   );
 };
 
-export default memo(Layout);
+export default memo(Home);
