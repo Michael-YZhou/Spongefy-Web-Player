@@ -1,4 +1,4 @@
-import { memo } from 'react';
+import { memo, Suspense } from 'react';
 import type { FC, ReactNode } from 'react';
 import { Outlet } from 'react-router-dom';
 
@@ -11,7 +11,9 @@ const Discover: FC<IDiscover> = () => {
   return (
     <div>
       <div>Navigation</div>
-      <Outlet />
+      <Suspense fallback="">
+        <Outlet />
+      </Suspense>
     </div>
   );
 };
