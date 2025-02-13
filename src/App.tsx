@@ -2,10 +2,15 @@ import { RouterProvider } from 'react-router-dom';
 import { router } from '@/router';
 import { HttpService } from './services';
 
+interface ResponseDataType {
+  data: string;
+}
+
 function App() {
-  HttpService.httpClient.request({
-    url: '/weather/Curitiba',
+  HttpService.httpClient.request<ResponseDataType>({
+    url: '/',
     method: 'GET',
+    showLoading: false,
     interceptors: {
       requestInterceptor: (config) => {
         // For example, add a custom header only for this request:
