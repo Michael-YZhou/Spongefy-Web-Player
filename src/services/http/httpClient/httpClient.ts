@@ -41,10 +41,10 @@ class HttpClient {
           console.log(this.loading);
         }
         // attach token to request header
-        const token = localStorage.getItem('token') || '';
-        if (token) {
-          config.headers.Authorization = `Bearer ${token}`;
-        }
+        // const token = localStorage.getItem('token') || '';
+        // if (token) {
+        //   config.headers.Authorization = `Bearer ${token}`;
+        // }
         return config;
       },
       (error) => {
@@ -87,8 +87,8 @@ class HttpClient {
     );
   }
 
-  // wrapper around axios.request. It accepts HttpClientConfig and returns a Promise.
-  request<T>(config: HttpClientConfig<T>): Promise<T> {
+  // wrapper around axios.request. It accepts HttpClientConfig and returns a Promise. Default return type is any.
+  request<T = any>(config: HttpClientConfig<T>): Promise<T> {
     return new Promise((resolve, reject) => {
       // Apply a per-request interceptor to the request config (if provided by the user):
       if (config.interceptors?.requestInterceptor) {
@@ -124,28 +124,28 @@ class HttpClient {
     });
   }
 
-  // wrapper around axios.get. It accepts HttpClientConfig and returns a Promise.
-  get<T>(config: HttpClientConfig<T>): Promise<T> {
+  // wrapper around axios.get. It accepts HttpClientConfig and returns a Promise. Default return type is any.
+  get<T = any>(config: HttpClientConfig<T>): Promise<T> {
     return this.request<T>({ ...config, method: 'GET' });
   }
 
-  // wrapper around axios.post. It accepts HttpClientConfig and returns a Promise.
-  post<T>(config: HttpClientConfig<T>): Promise<T> {
+  // wrapper around axios.post.
+  post<T = any>(config: HttpClientConfig<T>): Promise<T> {
     return this.request<T>({ ...config, method: 'POST' });
   }
 
-  // wrapper around axios.put. It accepts HttpClientConfig and returns a Promise.
-  put<T>(config: HttpClientConfig<T>): Promise<T> {
+  // wrapper around axios.put.
+  put<T = any>(config: HttpClientConfig<T>): Promise<T> {
     return this.request<T>({ ...config, method: 'PUT' });
   }
 
-  // wrapper around axios.delete. It accepts HttpClientConfig and returns a Promise.
-  delete<T>(config: HttpClientConfig<T>): Promise<T> {
+  // wrapper around axios.delete.
+  delete<T = any>(config: HttpClientConfig<T>): Promise<T> {
     return this.request<T>({ ...config, method: 'DELETE' });
   }
 
-  // wrapper around axios.patch. It accepts HttpClientConfig and returns a Promise.
-  patch<T>(config: HttpClientConfig<T>): Promise<T> {
+  // wrapper around axios.patch.
+  patch<T = any>(config: HttpClientConfig<T>): Promise<T> {
     return this.request<T>({ ...config, method: 'PATCH' });
   }
 }
