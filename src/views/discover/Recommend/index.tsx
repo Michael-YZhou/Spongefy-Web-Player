@@ -36,6 +36,7 @@ const Recommend: FC<IRecommend> = () => {
           requestInterceptor: (config) => {
             // For example, add a custom header only for this request:
             console.log('Per-request request interceptor - Success:', config);
+            console.log(config.url);
             return config;
           },
           responseInterceptor: (res) => {
