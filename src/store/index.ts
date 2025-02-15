@@ -9,8 +9,8 @@ const store = configureStore({
 });
 
 // Define the type of the state of the store
-type GetStateFnType = typeof store.getState;
-export type RootStateType = ReturnType<GetStateFnType>;
+const state = store.getState();
+export type RootStateType = typeof state;
 
 // Define the type of the dispatch function
 export type AppDispatchType = typeof store.dispatch;
