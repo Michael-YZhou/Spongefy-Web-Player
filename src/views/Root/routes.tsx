@@ -3,28 +3,28 @@ import { discoverRoute } from '@/views/Discover/routes';
 import { collectionRoute } from '@/views/Collection/routes';
 import { follownRoute } from '@/views/Follow/routes';
 import { downloadRoute } from '@/views/Download/routes';
-import Home from '.';
+import Root from '.';
 import { Navigate } from 'react-router-dom';
 
-const homeDefault: IRoute = {
+const rootDefaultRoute: IRoute = {
   path: '/',
   element: <Navigate to="/discover" />,
   isPrivate: false,
   label: 'Default',
 };
 
-const HomeChildren: IRoute[] = [
-  homeDefault,
+const RootChildren: IRoute[] = [
+  rootDefaultRoute,
   discoverRoute,
   collectionRoute,
   follownRoute,
   downloadRoute,
 ];
 
-export const homeRoute: IRoute = {
+export const rootRoute: IRoute = {
   path: '/',
-  element: <Home />,
+  element: <Root />,
   isPrivate: false,
-  children: HomeChildren,
-  label: 'Home',
+  children: RootChildren,
+  label: 'Root',
 };

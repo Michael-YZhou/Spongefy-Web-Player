@@ -1,6 +1,7 @@
 import { memo, FC, ReactNode } from 'react';
+import { NavLink } from 'react-router-dom';
 import { IRoute } from '@/services/routing/RoutingService';
-import { renderNavigation } from '@/services/navigation/NavigationService';
+import { filterChildrenWithDefaultLabel } from '@/services/navigation/NavigationService';
 
 interface INavigation {
   children?: ReactNode;
@@ -8,7 +9,23 @@ interface INavigation {
 }
 
 const Navigation: FC<INavigation> = ({ routes }) => {
-  return <nav>{renderNavigation(routes)}</nav>;
+  // Filter out children routes with label 'Default'
+  const filteredRoutes = filterChildrenWithDefaultLabel(routes);
+
+  return (
+    <ul>
+      {filteredRoutes.map((route) => (
+        <li key={route.path}>
+          <NavLink
+            to={route.path}
+            style={({ isActive }) => ({ color: isActive ? 'blue' : 'black' })}
+          >
+            {route.label}
+          </NavLink>
+        </li>
+      ))}
+    </ul>
+  );
 };
 
 export default memo(Navigation);

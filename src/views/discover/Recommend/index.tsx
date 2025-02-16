@@ -1,6 +1,6 @@
 import { memo, useEffect, useState } from 'react';
 import { FC, ReactNode } from 'react';
-import { HttpService } from '@/services';
+import { httpClient } from '@/services/http/HttpService';
 
 interface IRecommend {
   children?: ReactNode;
@@ -28,7 +28,7 @@ const Recommend: FC<IRecommend> = () => {
   const [banners, setBanners] = useState<IBannerData[]>([]);
 
   useEffect(() => {
-    HttpService.httpClient
+    httpClient
       .get<IBannerResponse>({
         url: '/banner',
         showLoading: false,
