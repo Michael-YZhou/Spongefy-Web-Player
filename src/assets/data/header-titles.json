@@ -1,0 +1,32 @@
+[
+  {
+    "title": "Discover",
+    "type": "path",
+    "link": "/discover"
+  },
+  {
+    "title": "My Collections",
+    "type": "path",
+    "link": "/collection"
+  },
+  {
+    "title": "Follow",
+    "type": "path",
+    "link": "/follow"
+  },
+  {
+    "title": "Product",
+    "type": "link",
+    "link": "https://music.163.com/store/product"
+  },
+  {
+    "title": "Musician",
+    "type": "link",
+    "link": "https://music.163.com/st/musician"
+  },
+  {
+    "title": "Download",
+    "type": "path",
+    "link": "/download"
+  }
+]

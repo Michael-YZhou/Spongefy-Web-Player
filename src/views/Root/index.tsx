@@ -1,14 +1,12 @@
 import { memo, Suspense, FC, ReactNode } from 'react';
 import { Outlet } from 'react-router-dom';
-import { rootRoute } from './routes';
-import Navigation from '../../components/Navigation';
+import Header from './Header';
 import Footer from '../../components/Footer';
 
 import { shallowEqual } from 'react-redux';
 import { useAppSelector } from '../../hooks/useAppSelector';
 import { useAppDispatch } from '../../hooks/useAppDispach';
 import { changeMassageAction } from '../../store/modules/counter';
-import { IRoute } from '@/services/routing/RoutingService';
 
 interface IRoot {
   children?: ReactNode;
@@ -28,14 +26,9 @@ const Root: FC<IRoot> = () => {
   const handleChangeMessage = () =>
     dispatch(changeMassageAction('Hello Redux Toolkit'));
 
-  // Get the children of the root route
-  const routes: IRoute[] = rootRoute.children ? rootRoute.children : [];
-
   return (
     <div>
-      {/* Navigation Bar */}
-      <Navigation routes={routes} />
-      {/* Render Routed Content Below */}
+      <Header />
       <Suspense fallback="">
         <Outlet />
       </Suspense>

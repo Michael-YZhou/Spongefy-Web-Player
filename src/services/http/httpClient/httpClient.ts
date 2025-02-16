@@ -79,7 +79,7 @@ class HttpClient {
       (error) => {
         console.log('Global Response Interceptor - Error', error);
         // handle global error for network error
-        if (error.response.ststus === 404) {
+        if (error.response.status === 404) {
           console.log('Global Response Interceptor - Error 404');
         }
         return Promise.reject(error);
