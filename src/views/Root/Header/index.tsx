@@ -1,9 +1,11 @@
 import { memo } from 'react';
 import { FC, ReactNode } from 'react';
+import { Input } from 'antd';
+import { SearchOutlined } from '@ant-design/icons';
 import { HeaderWrapper, HeaderLeft, HeaderRight } from './style';
-import Navigation from '@/components/Navigation';
-import { IRoute } from '@/services/routing/RoutingService';
-import { rootRoute } from '../routes';
+// import Navigation from '@/components/Navigation';
+// import { IRoute } from '@/services/routing/RoutingService';
+// import { rootRoute } from '../routes';
 
 import { Link, NavLink } from 'react-router-dom';
 import logo from '@/assets/images/logo.svg';
@@ -53,7 +55,15 @@ const Header: FC<IProps> = () => {
             })}
           </div>
         </HeaderLeft>
-        <HeaderRight>Header-Right</HeaderRight>
+        <HeaderRight>
+          <Input
+            className="search"
+            placeholder="music/video/radio/user"
+            prefix={<SearchOutlined />}
+          />
+          <div className="centre">Creator Centre</div>
+          <div className="login">Login</div>
+        </HeaderRight>
       </div>
       <div className="divider"></div>
     </HeaderWrapper>
