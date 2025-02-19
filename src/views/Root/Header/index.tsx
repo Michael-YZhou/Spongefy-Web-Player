@@ -11,12 +11,12 @@ import { Link, NavLink } from 'react-router-dom';
 import logo from '@/assets/images/logo.svg';
 import headerTitles from '@/assets/data/header-titles.json';
 
-interface IProps {
+interface IHeader {
   children?: ReactNode;
   // TODO
 }
 
-const Header: FC<IProps> = () => {
+const Header: FC<IHeader> = () => {
   // Get the children of the root route
   // const routes: IRoute[] = rootRoute.children ? rootRoute.children : [];
 

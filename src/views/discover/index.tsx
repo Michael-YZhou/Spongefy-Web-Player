@@ -1,6 +1,7 @@
 import { memo, Suspense } from 'react';
 import type { FC, ReactNode } from 'react';
 import { Outlet } from 'react-router-dom';
+import NavBar from './child-components/NavBar';
 
 interface IDiscover {
   children?: ReactNode;
@@ -10,7 +11,7 @@ interface IDiscover {
 const Discover: FC<IDiscover> = () => {
   return (
     <div>
-      <div>Navigation</div>
+      <NavBar />
       <Suspense fallback="">
         <Outlet />
       </Suspense>

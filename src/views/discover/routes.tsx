@@ -4,12 +4,12 @@ import { IRoute } from '@/services/routing/RoutingService';
 
 // Lazy-load parent and child components
 const Discover = lazy(() => import('@/views/Discover'));
-const Recommend = lazy(() => import('@/views/Discover/Recommend'));
-const Ranking = lazy(() => import('@/views/Discover/Ranking'));
-const Playlist = lazy(() => import('@/views/Discover/Playlist'));
-const Radio = lazy(() => import('@/views/Discover/Radio'));
-const Artist = lazy(() => import('@/views/Discover/Artist'));
-const Album = lazy(() => import('@/views/Discover/Album'));
+const Recommend = lazy(() => import('@/views/Discover/child-views/Recommend'));
+const Ranking = lazy(() => import('@/views/Discover/child-views/Ranking'));
+const Playlist = lazy(() => import('@/views/Discover/child-views/Playlist'));
+const Radio = lazy(() => import('@/views/Discover/child-views/Radio'));
+const Artist = lazy(() => import('@/views/Discover/child-views/Artist'));
+const Album = lazy(() => import('@/views/Discover/child-views/Album'));
 
 // Define default route for discover
 const discoverDefault: IRoute = {
