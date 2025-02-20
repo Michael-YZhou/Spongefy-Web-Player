@@ -1,7 +1,7 @@
 import { memo, Suspense } from 'react';
 import type { FC, ReactNode } from 'react';
 import { Outlet } from 'react-router-dom';
-import NavBar from './child-components/NavBar';
+import NavBar from './child-components/nav-bar';
 
 interface IDiscover {
   children?: ReactNode;

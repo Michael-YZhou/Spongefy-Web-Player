@@ -6,7 +6,6 @@ export const fetchBannerDataAction = createAsyncThunk(
   'recommend/fetchBannerData',
   async () => {
     const res = await getBanners();
-    console.log(res);
     return res.banners;
   },
 );
@@ -35,6 +34,19 @@ const recommendSlice = createSlice({
   name: 'recommend',
   initialState,
   reducers: {},
+  extraReducers: (builder) => {
+    builder
+      .addCase(fetchBannerDataAction.pending, () => {
+        console.log('fetching banner data pending...');
+      })
+      .addCase(fetchBannerDataAction.fulfilled, (state, action) => {
+        console.log('fetch banner data fulfilled');
+        state.banners = action.payload;
+      })
+      .addCase(fetchBannerDataAction.rejected, () => {
+        console.log('fetch banner data rejected');
+      });
+  },
 });
 
 export default recommendSlice.reducer;
