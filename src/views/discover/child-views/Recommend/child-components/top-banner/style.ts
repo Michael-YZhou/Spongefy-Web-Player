@@ -1,6 +1,5 @@
 import styled from 'styled-components';
 import downloadImg from '@/assets/images/download.png';
-import icon2Img from '@/assets/images/icon2.png';
 
 export const BannerWrapper = styled.div`
   .banner {
@@ -32,18 +31,19 @@ export const BannerLeft = styled.div`
     justify-content: center;
 
     > li {
-      margin: 0 2px;
+      margin: 0 6px;
 
       .item {
         display: inline-block;
-        width: 20px;
-        height: 20px;
-        background: url(${icon2Img});
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background-position: -100px -560px;
         cursor: pointer;
-
-        &:hovver,
+        //background: url(); use sprite_01.png as background image, added by className to the element
+        &:hover,
         &.active {
-          background-position: -16px -343px;
+          background-position: -100px -240px;
         }
       }
     }
@@ -80,7 +80,7 @@ export const BannerControl = styled.div`
     position: absolute;
     width: 37px;
     height: 63px;
-    background-image: url(${icon2Img});
+    //background-image: url(); use sprite_icon2.png as background image, added by className to the element
     background-color: transparent;
     cursor: pointer;
 
