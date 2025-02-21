@@ -3,6 +3,7 @@ import { FC, ReactNode } from 'react';
 import { useAppDispatch } from '@/hooks/useAppDispach';
 import { fetchBannerDataAction } from './store/recommend';
 import TopBanner from './child-components/top-banner';
+import { RecommendWrapper } from './style';
 
 interface IRecommend {
   children?: ReactNode;
@@ -18,10 +19,13 @@ const Recommend: FC<IRecommend> = () => {
   }, []);
 
   return (
-    <div>
+    <RecommendWrapper>
       <TopBanner />
-      Recommend
-    </div>
+      <div className="content wrap-v2">
+        <div className="left">left</div>
+        <div className="right">right</div>
+      </div>
+    </RecommendWrapper>
   );
 };
 

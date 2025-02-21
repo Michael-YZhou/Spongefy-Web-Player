@@ -54,7 +54,7 @@ export const BannerRight = styled.a.attrs({
   href: 'https://music.163.com/#/download',
   target: '_blank',
 })`
-  width: 254px;
+  width: 250px;
   height: 270px;
   background: url(${downloadImg});
   background-size: cover;
@@ -62,7 +62,7 @@ export const BannerRight = styled.a.attrs({
 
   .download-text {
     display: block;
-    width: 254px;
+    width: 250px;
     color: #8d8d8d;
     text-align: center;
     margin-top: 244px;
