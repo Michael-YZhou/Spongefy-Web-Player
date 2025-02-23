@@ -6,6 +6,7 @@ import { fetchPopularAlbumsAction } from './store/recommend';
 import TopBanner from './child-components/TopBanner';
 import { RecommendWrapper } from './style';
 import Popular from './child-components/Popular';
+import NewAlbums from './child-components/NewAlbums';
 
 interface IRecommend {
   children?: ReactNode;
@@ -27,7 +28,7 @@ const Recommend: FC<IRecommend> = () => {
       <div className="content wrap-v2">
         <div className="left">
           <Popular />
-          left
+          <NewAlbums />
         </div>
         <div className="right">right</div>
       </div>
