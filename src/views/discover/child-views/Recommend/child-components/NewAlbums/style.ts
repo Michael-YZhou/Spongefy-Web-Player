@@ -36,5 +36,9 @@ export const NewAlbumsWrapper = styled.div`
         background-position: -320px -75px;
       }
     }
+
+    .banner {
+      overflow: hidden;
+    }
   }
 `;
