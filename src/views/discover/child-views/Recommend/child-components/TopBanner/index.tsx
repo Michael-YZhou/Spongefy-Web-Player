@@ -83,7 +83,7 @@ const TopBanner: FC<IProps> = () => {
               return (
                 <li key={item.imageUrl}>
                   <span
-                    className={classNames('item', 'sprite_01', {
+                    className={classNames('item', {
                       active: currentBannerIndex === index,
                     })}
                   ></span>

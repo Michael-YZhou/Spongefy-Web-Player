@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import downloadImg from '@/assets/images/download.png';
+import bannerSprite from '@/assets/images/banner_sprite.png';
 
 export const BannerWrapper = styled.div`
   .banner {
@@ -31,19 +32,18 @@ export const BannerLeft = styled.div`
     justify-content: center;
 
     > li {
-      margin: 0 6px;
+      margin: 0 2px;
 
       .item {
         display: inline-block;
-        width: 6px;
-        height: 6px;
-        border-radius: 50%;
-        background-position: -100px -560px;
+        width: 20px;
+        height: 20px;
+        background-image: url(${bannerSprite});
+        background-position: 3px -343px;
         cursor: pointer;
-        //background: url(); use sprite_01.png as background image, added by className to the element
         &:hover,
         &.active {
-          background-position: -100px -240px;
+          background-position: -16px -343px;
         }
       }
     }
@@ -75,12 +75,13 @@ export const BannerControl = styled.div`
   right: 0;
   top: 50%;
   transform: translateY(-50%);
+  height: 63px;
 
   .btn {
     position: absolute;
     width: 37px;
     height: 63px;
-    //background-image: url(); use sprite_icon2.png as background image, added by className to the element
+    background-image: url(${bannerSprite});
     background-color: transparent;
     cursor: pointer;
 
@@ -91,11 +92,11 @@ export const BannerControl = styled.div`
 
   .left {
     left: -68px;
-    background-position: 4px -223px;
+    background-position: 0px -360px;
   }
 
   .right {
     right: -68px;
-    background-position: -40px -223px;
+    background-position: 00px -508px;
   }
 `;

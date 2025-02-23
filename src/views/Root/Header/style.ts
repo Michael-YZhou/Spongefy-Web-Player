@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import hotIcon from '@/assets/images/hot.png';
+import sprite01Img from '@/assets/images/sprite_01.png';
 
 export const HeaderWrapper = styled.div`
   height: 75px;
@@ -27,8 +27,9 @@ export const HeaderLeft = styled.div`
     display: block;
     width: 176px;
     height: 70px;
+    background-image: url(${sprite01Img});
     background-position: 0 0;
-    background-color: #f7e948;
+    /* background-color: #f7e948; */
     text-indent: -9999px;
   }
 
@@ -54,11 +55,10 @@ export const HeaderLeft = styled.div`
         position: absolute;
         content: '';
         display: block; /* Ensures the pseudo-element takes up space */
-        width: 24px;
-        height: 13px;
-        background-image: url(${hotIcon});
-        background-color: #fff;
-        border-radius: 4px;
+        width: 28px;
+        height: 19px;
+        background-image: url(${sprite01Img});
+        background-position: -190px 0;
         top: 20px;
         right: -8px;
       }

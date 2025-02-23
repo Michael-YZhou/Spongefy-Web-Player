@@ -1,9 +1,11 @@
 import { memo, useEffect } from 'react';
-import { FC, ReactNode } from 'react';
+import type { FC, ReactNode } from 'react';
 import { useAppDispatch } from '@/hooks/useAppDispach';
 import { fetchBannerDataAction } from './store/recommend';
-import TopBanner from './child-components/top-banner';
+import { fetchPopularAlbumsAction } from './store/recommend';
+import TopBanner from './child-components/TopBanner';
 import { RecommendWrapper } from './style';
+import Popular from './child-components/Popular';
 
 interface IRecommend {
   children?: ReactNode;
@@ -16,13 +18,17 @@ const Recommend: FC<IRecommend> = () => {
   /** dispatch action to fetch banner data */
   useEffect(() => {
     dispatch(fetchBannerDataAction());
+    dispatch(fetchPopularAlbumsAction());
   }, []);
 
   return (
     <RecommendWrapper>
       <TopBanner />
       <div className="content wrap-v2">
-        <div className="left">left</div>
+        <div className="left">
+          <Popular />
+          left
+        </div>
         <div className="right">right</div>
       </div>
     </RecommendWrapper>

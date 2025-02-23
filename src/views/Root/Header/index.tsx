@@ -8,7 +8,7 @@ import { HeaderWrapper, HeaderLeft, HeaderRight } from './style';
 // import { rootRoute } from '../routes';
 
 import { Link, NavLink } from 'react-router-dom';
-import logo from '@/assets/images/logo.svg';
+// import logo from '@/assets/images/logo.svg';
 import headerTitles from '@/assets/data/header-titles.json';
 
 interface IHeader {
@@ -43,7 +43,7 @@ const Header: FC<IHeader> = () => {
         <HeaderLeft>
           {/* <Navigation routes={routes} /> */}
           <Link className="logo" to="/">
-            <img src={logo} alt="logo" className="logo" />
+            {/* <img src={logo} alt="logo" className="logo" /> */}
           </Link>
           <div className="title-list">
             {headerTitles.map((item) => {

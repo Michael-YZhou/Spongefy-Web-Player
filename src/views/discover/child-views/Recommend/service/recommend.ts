@@ -6,3 +6,12 @@ export function getBanners() {
     url: '/banner',
   });
 }
+
+export function getPopularAlbums(limit = 30) {
+  return httpClient.get({
+    url: '/personalized',
+    params: {
+      limit,
+    },
+  });
+}
