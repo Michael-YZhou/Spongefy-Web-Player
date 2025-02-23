@@ -2,7 +2,7 @@ import { memo } from 'react';
 import type { FC, ReactNode } from 'react';
 import type { IAlbumData } from '@/views/Discover/child-views/Recommend/type';
 import { PlayListItemWrapper } from './style';
-import { formatCount } from '@/utils/format';
+import { formatCount, formatImageSize } from '@/utils/format';
 
 interface IProps {
   children?: ReactNode;
@@ -16,7 +16,7 @@ const PlayListItem: FC<IProps> = (props) => {
   return (
     <PlayListItemWrapper>
       <div className="cover-top">
-        <img src={itemData.picUrl + '?param=140x140'} alt={itemData.name} />
+        <img src={formatImageSize(itemData.picUrl, 140)} alt={itemData.name} />
         <div className="cover sprite_cover">
           <div className="info sprite_cover">
             <span>

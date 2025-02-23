@@ -9,3 +9,11 @@ export function formatCount(count: number) {
     return count.toString();
   }
 }
+
+export function formatImageSize(
+  imageUrl: string,
+  width: number,
+  height: number = width,
+) {
+  return imageUrl + `?param=${width}x${height}`;
+}
