@@ -15,3 +15,9 @@ export function getPopularAlbums(limit = 30) {
     },
   });
 }
+
+export function getNewAlbums() {
+  return httpClient.get({
+    url: '/album/newest',
+  });
+}

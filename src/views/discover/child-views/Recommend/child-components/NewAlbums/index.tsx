@@ -4,6 +4,9 @@ import { Carousel } from 'antd';
 import type { CarouselRef } from 'antd/es/carousel';
 import { NewAlbumsWrapper } from './style';
 import SectionHeaderV1 from '@/components/SectionHeaderV1';
+import { useAppSelector } from '@/hooks/useAppSelector';
+import AlbumItem from '@/components/AlbumItem';
+import { shallowEqual } from 'react-redux';
 
 interface IProps {
   children?: ReactNode;
@@ -13,6 +16,13 @@ interface IProps {
 const NewAlbums: FC<IProps> = () => {
   // create a ref for carousel for controlling carousel
   const carouselRef = useRef<CarouselRef>(null);
+
+  const { newAlbums } = useAppSelector(
+    (state) => ({
+      newAlbums: state.recommend.newAlbums,
+    }),
+    shallowEqual,
+  );
 
   // handle click event for previous button
   const handlePrevClick = () => {
@@ -34,8 +44,16 @@ const NewAlbums: FC<IProps> = () => {
         ></button>
         <div className="banner">
           <Carousel ref={carouselRef} dots={false} speed={1500}>
-            {[1, 2, 3].map((item) => {
-              return <h2 key={item}>{item}</h2>;
+            {[0, 1].map((item) => {
+              return (
+                <div key={item}>
+                  <div className="album-list">
+                    {newAlbums.slice(item * 5, (item + 1) * 5).map((album) => {
+                      return <AlbumItem key={album.id} itemData={album} />;
+                    })}
+                  </div>
+                </div>
+              );
             })}
           </Carousel>
         </div>

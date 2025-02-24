@@ -1,12 +1,12 @@
 import { memo } from 'react';
 import type { FC, ReactNode } from 'react';
-import type { IAlbumData } from '@/views/Discover/child-views/Recommend/type';
+import type { IPopularAlbumData } from '@/views/Discover/child-views/Recommend/type';
 import { PlayListItemWrapper } from './style';
 import { formatCount, formatImageSize } from '@/utils/format';
 
 interface IProps {
   children?: ReactNode;
-  itemData: IAlbumData;
+  itemData: IPopularAlbumData;
   // TODO
 }
 

@@ -39,6 +39,12 @@ export const NewAlbumsWrapper = styled.div`
 
     .banner {
       overflow: hidden;
+
+      .album-list {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
     }
   }
 `;

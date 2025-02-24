@@ -1,7 +1,10 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-import { getBanners } from '../service/recommend';
-import { getPopularAlbums } from '../service/recommend';
-import type { IBannerData, IAlbumData } from '../type';
+import type { IBannerData, IPopularAlbumData, INewAlbumData } from '../type';
+import {
+  getBanners,
+  getPopularAlbums,
+  getNewAlbums,
+} from '../service/recommend';
 
 // create an async thunk to fetch the banner data
 export const fetchBannerDataAction = createAsyncThunk(
@@ -20,15 +23,25 @@ export const fetchPopularAlbumsAction = createAsyncThunk(
   },
 );
 
+export const fetchNewAlbumsAction = createAsyncThunk(
+  'recommend/fetchNewAlbums',
+  async (arg, { dispatch }) => {
+    const res = await getNewAlbums();
+    return res.albums;
+  },
+);
+
 // define the recommend state data structure
 interface IRecommendState {
   banners: IBannerData[];
-  popularAlbums: IAlbumData[];
+  popularAlbums: IPopularAlbumData[];
+  newAlbums: INewAlbumData[];
 }
 
 const initialState: IRecommendState = {
   banners: [],
   popularAlbums: [],
+  newAlbums: [],
 };
 
 // create a slice to manage the recommend state
@@ -59,6 +72,17 @@ const recommendSlice = createSlice({
       })
       .addCase(fetchPopularAlbumsAction.rejected, () => {
         console.log('fetch popular albums rejected');
+      })
+      // handle the fetch new albums async thunk
+      .addCase(fetchNewAlbumsAction.pending, () => {
+        console.log('fetching new albums pending...');
+      })
+      .addCase(fetchNewAlbumsAction.fulfilled, (state, action) => {
+        console.log('fetch new albums fulfilled');
+        state.newAlbums = action.payload;
+      })
+      .addCase(fetchNewAlbumsAction.rejected, () => {
+        console.log('fetch new albums rejected');
       });
   },
 });
