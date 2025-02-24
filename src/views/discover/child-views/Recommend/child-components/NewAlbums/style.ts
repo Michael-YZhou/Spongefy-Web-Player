@@ -39,6 +39,7 @@ export const NewAlbumsWrapper = styled.div`
 
     .banner {
       overflow: hidden;
+      flex: 1; /* Each item takes equal space, this will fix the item width inside the carousel */
 
       .album-list {
         display: flex;

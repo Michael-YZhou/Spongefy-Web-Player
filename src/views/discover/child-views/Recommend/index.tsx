@@ -10,6 +10,7 @@ import {
   fetchPopularAlbumsAction,
   fetchNewAlbumsAction,
 } from './store/recommend';
+import FeaturedCharts from './child-components/FeaturedCharts';
 
 interface IRecommend {
   children?: ReactNode;
@@ -33,6 +34,7 @@ const Recommend: FC<IRecommend> = () => {
         <div className="left">
           <Popular />
           <NewAlbums />
+          <FeaturedCharts />
         </div>
         <div className="right">right</div>
       </div>

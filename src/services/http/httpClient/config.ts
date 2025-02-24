@@ -1,4 +1,4 @@
-const TIME_OUT = 10000;
+const TIME_OUT = 60000;
 // let BASE_URL = '';
 
 // if (import.meta.env.MODE === 'development') {
