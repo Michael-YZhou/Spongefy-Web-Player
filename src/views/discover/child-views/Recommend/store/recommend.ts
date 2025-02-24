@@ -4,7 +4,9 @@ import {
   getBanners,
   getPopularAlbums,
   getNewAlbums,
+  getPlayListDetail,
 } from '../service/recommend';
+import { IFeaturedChartData } from '../child-components/FeaturedCharts/type';
 
 // create an async thunk to fetch the banner data
 export const fetchBannerDataAction = createAsyncThunk(
@@ -31,17 +33,35 @@ export const fetchNewAlbumsAction = createAsyncThunk(
   },
 );
 
+const chartIds = [19723756, 3779629, 2884035];
+export const fetchFeaturedChartsAction = createAsyncThunk(
+  'recommend/fetchFeaturedCharts',
+  async (arg, { dispatch }) => {
+    for (const id of chartIds) {
+      getPlayListDetail(id).then((res) => {
+        return res.playlist;
+      });
+    }
+  },
+);
+
 // define the recommend state data structure
 interface IRecommendState {
   banners: IBannerData[];
   popularAlbums: IPopularAlbumData[];
   newAlbums: INewAlbumData[];
+  hotCharts: IFeaturedChartData | {};
+  newCherts: IFeaturedChartData | {};
+  originalCharts: IFeaturedChartData | {};
 }
 
 const initialState: IRecommendState = {
   banners: [],
   popularAlbums: [],
   newAlbums: [],
+  hotCharts: {},
+  newCherts: {},
+  originalCharts: {},
 };
 
 // create a slice to manage the recommend state
@@ -83,6 +103,20 @@ const recommendSlice = createSlice({
       })
       .addCase(fetchNewAlbumsAction.rejected, () => {
         console.log('fetch new albums rejected');
+      })
+      // handle the fetch featured charts async thunk
+      .addCase(fetchFeaturedChartsAction.pending, () => {
+        console.log('fetching featured charts pending...');
+      })
+      .addCase(fetchFeaturedChartsAction.fulfilled, (state, action) => {
+        console.log('fetch featured charts fulfilled');
+        console.log(action.payload);
+        // state.hotCharts = action.payload[0];
+        // state.newCherts = action.payload[1];
+        // state.originalCharts = action.payload[2];
+      })
+      .addCase(fetchFeaturedChartsAction.rejected, () => {
+        console.log('fetch featured charts rejected');
       });
   },
 });

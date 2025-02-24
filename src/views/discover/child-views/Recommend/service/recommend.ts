@@ -21,3 +21,12 @@ export function getNewAlbums() {
     url: '/album/newest',
   });
 }
+
+export function getPlayListDetail(id: number) {
+  return httpClient.get({
+    url: '/playlist/detail',
+    params: {
+      id,
+    },
+  });
+}

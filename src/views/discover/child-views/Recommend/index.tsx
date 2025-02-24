@@ -9,6 +9,7 @@ import {
   fetchBannerDataAction,
   fetchPopularAlbumsAction,
   fetchNewAlbumsAction,
+  fetchFeaturedChartsAction,
 } from './store/recommend';
 import FeaturedCharts from './child-components/FeaturedCharts';
 
@@ -25,6 +26,7 @@ const Recommend: FC<IRecommend> = () => {
     dispatch(fetchBannerDataAction());
     dispatch(fetchPopularAlbumsAction());
     dispatch(fetchNewAlbumsAction());
+    dispatch(fetchFeaturedChartsAction());
   }, []);
 
   return (

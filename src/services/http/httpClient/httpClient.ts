@@ -35,6 +35,7 @@ class HttpClient {
     this.instance.interceptors.request.use(
       (config) => {
         console.log('Global Request Interceptor - Success', config);
+        console.log(config.url);
         // show loading spinner
         if (this.showLoading) {
           this.loading = 'Show Loading...';
@@ -91,6 +92,7 @@ class HttpClient {
   request<T = any>(config: HttpClientConfig<T>): Promise<T> {
     return new Promise((resolve, reject) => {
       // Apply a per-request interceptor to the request config (if provided by the user):
+      console.log(config.url);
       if (config.interceptors?.requestInterceptor) {
         config = config.interceptors.requestInterceptor(config);
       }

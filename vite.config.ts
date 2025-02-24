@@ -19,4 +19,13 @@ export default defineConfig({
       },
     },
   },
+  server: {
+    proxy: {
+      '/api': {
+        target: 'http://codercba.com:9002', // backend URL to forward requests to
+        changeOrigin: true, // Avoid host header issues
+        rewrite: (path) => path.replace(/^\/api/, ''), // Remove `/api` prefix before forwarding
+      },
+    },
+  },
 });
