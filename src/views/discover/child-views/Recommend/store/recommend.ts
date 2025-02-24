@@ -37,11 +37,11 @@ const chartIds = [19723756, 3779629, 2884035];
 export const fetchFeaturedChartsAction = createAsyncThunk(
   'recommend/fetchFeaturedCharts',
   async (arg, { dispatch }) => {
-    for (const id of chartIds) {
-      getPlayListDetail(id).then((res) => {
-        return res.playlist;
-      });
-    }
+    // promise.all to fetch all the featured charts with correct order
+    const playlists = await Promise.all(
+      chartIds.map((id) => getPlayListDetail(id).then((res) => res.playlist)),
+    );
+    return playlists; // This array will be the payload in fulfilled
   },
 );
 
@@ -50,18 +50,14 @@ interface IRecommendState {
   banners: IBannerData[];
   popularAlbums: IPopularAlbumData[];
   newAlbums: INewAlbumData[];
-  hotCharts: IFeaturedChartData | {};
-  newCherts: IFeaturedChartData | {};
-  originalCharts: IFeaturedChartData | {};
+  featuredCharts: IFeaturedChartData[];
 }
 
 const initialState: IRecommendState = {
   banners: [],
   popularAlbums: [],
   newAlbums: [],
-  hotCharts: {},
-  newCherts: {},
-  originalCharts: {},
+  featuredCharts: [],
 };
 
 // create a slice to manage the recommend state
@@ -110,10 +106,7 @@ const recommendSlice = createSlice({
       })
       .addCase(fetchFeaturedChartsAction.fulfilled, (state, action) => {
         console.log('fetch featured charts fulfilled');
-        console.log(action.payload);
-        // state.hotCharts = action.payload[0];
-        // state.newCherts = action.payload[1];
-        // state.originalCharts = action.payload[2];
+        state.featuredCharts = action.payload;
       })
       .addCase(fetchFeaturedChartsAction.rejected, () => {
         console.log('fetch featured charts rejected');
