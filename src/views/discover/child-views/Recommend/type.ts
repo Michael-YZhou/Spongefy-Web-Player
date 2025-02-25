@@ -1,3 +1,6 @@
+/*
+ * ****************************** Banner Section ******************************
+ */
 export interface IBannerData {
   imageUrl: string;
   targetId: number;
@@ -10,6 +13,9 @@ export interface IBannerData {
   bannerBizType: string;
 }
 
+/*
+ * ****************************** Popular Albums Section ******************************
+ */
 export interface IPopularAlbumData {
   id: number;
   type: number;
@@ -57,6 +63,9 @@ interface Artist2 {
   img1v1Id_str: string;
 }
 
+/*
+ * ****************************** New Albums Section ******************************
+ */
 export interface INewAlbumData {
   name: string;
   id: number;
@@ -82,4 +91,30 @@ export interface INewAlbumData {
   paid: boolean;
   onSale: boolean;
   picId_str: string;
+}
+
+/*
+ * ****************************** Featured Section ******************************
+ */
+export interface IFeaturedChartData {
+  code: number;
+  relatedVideos: any;
+  playlist: IPlaylist;
+  urls: any;
+  privileges: Privilege[];
+  sharedPrivilege: any;
+  resEntrance: any;
+  fromUsers: any;
+  fromUserCount: number;
+  songFromUsers: any;
+}
+
+// can't find the type definition for IPlaylist and Privilege from the return data of the API
+// so I just define them here as any
+export interface IPlaylist {
+  [key: string]: any;
+}
+
+interface Privilege {
+  [key: string]: any;
 }

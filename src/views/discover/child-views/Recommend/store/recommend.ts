@@ -1,12 +1,16 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-import type { IBannerData, IPopularAlbumData, INewAlbumData } from '../type';
+import type {
+  IBannerData,
+  IPopularAlbumData,
+  INewAlbumData,
+  IPlaylist,
+} from '../type';
 import {
   getBanners,
   getPopularAlbums,
   getNewAlbums,
   getPlayListDetail,
 } from '../service/recommend';
-import { IFeaturedChartData } from '../child-components/FeaturedCharts/type';
 
 // create an async thunk to fetch the banner data
 export const fetchBannerDataAction = createAsyncThunk(
@@ -39,7 +43,7 @@ export const fetchFeaturedChartsAction = createAsyncThunk(
   async (arg, { dispatch }) => {
     // promise.all to fetch all the featured charts with correct order
     const playlists = await Promise.all(
-      chartIds.map((id) => getPlayListDetail(id).then((res) => res.playlist)),
+      chartIds.map((id) => getPlayListDetail(id).then((res) => res!.playlist)),
     );
     return playlists; // This array will be the payload in fulfilled
   },
@@ -50,7 +54,7 @@ interface IRecommendState {
   banners: IBannerData[];
   popularAlbums: IPopularAlbumData[];
   newAlbums: INewAlbumData[];
-  featuredCharts: IFeaturedChartData[];
+  featuredCharts: IPlaylist[];
 }
 
 const initialState: IRecommendState = {

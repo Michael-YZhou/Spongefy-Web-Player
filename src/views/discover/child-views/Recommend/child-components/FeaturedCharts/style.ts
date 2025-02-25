@@ -3,6 +3,8 @@ import FeaturedChardsBg from '@/assets/images/recommend-charts-bg.png';
 
 export const FeaturedChartsWrapper = styled.div`
   .content {
+    display: flex;
+
     height: 472px;
     margin-top: 20px;
     background-image: url(${FeaturedChardsBg});
