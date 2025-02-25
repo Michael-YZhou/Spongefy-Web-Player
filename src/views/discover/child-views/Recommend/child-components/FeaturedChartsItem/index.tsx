@@ -33,7 +33,7 @@ const FeaturedChartsItem: FC<IProps> = (props) => {
         </div>
       </div>
       <div className="list">
-        {tracks.slice(0, 10).map((item: any, index: number) => {
+        {tracks.slice(0, 10).map((item, index) => {
           return (
             <div className="list-item" key={item.id}>
               <div className="rank">{index + 1}</div>
