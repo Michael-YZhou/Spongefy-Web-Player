@@ -12,6 +12,7 @@ import {
   fetchFeaturedChartsAction,
 } from './store/recommend';
 import FeaturedCharts from './child-components/FeaturedCharts';
+import Login from './child-components/Login';
 
 interface IRecommend {
   children?: ReactNode;
@@ -38,7 +39,11 @@ const Recommend: FC<IRecommend> = () => {
           <NewAlbums />
           <FeaturedCharts />
         </div>
-        <div className="right">right</div>
+        <div className="right">
+          <Login />
+          <div>For Artists</div>
+          <div>Popular Podcaster</div>
+        </div>
       </div>
     </RecommendWrapper>
   );
