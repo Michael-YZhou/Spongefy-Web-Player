@@ -7,6 +7,7 @@ import {
   newAlbums,
   featuredCharts,
   artistsList,
+  podcastsList,
 } from '@/assets/data/api-data';
 
 // this is a service file that is used to make API calls
@@ -56,4 +57,14 @@ export function getArtistsList(type: number, area: number, limit = 30) {
   //   },
   // });
   return Promise.resolve({ artists: artistsList.slice(0, limit) });
+}
+
+export function getPodcastsList(limit = 10) {
+  // return httpClient.get({
+  //   url: '/program/recommend',
+  //   params: {
+  //     limit,
+  //   },
+  // });
+  return Promise.resolve({ programs: podcastsList.slice(0, limit) });
 }

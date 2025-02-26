@@ -11,11 +11,12 @@ import {
   fetchNewAlbumsAction,
   fetchFeaturedChartsAction,
   fetchArtistsListAction,
+  fetchPodcastsListAction,
 } from './store/recommend';
 import FeaturedCharts from './child-components/FeaturedCharts';
 import Login from './child-components/Login';
 import ArtistsList from './child-components/ArtistsList';
-import PodcastersList from './child-components/PodcastersList';
+import PodcastersList from './child-components/PodcastsList';
 
 interface IRecommend {
   children?: ReactNode;
@@ -32,6 +33,7 @@ const Recommend: FC<IRecommend> = () => {
     dispatch(fetchNewAlbumsAction());
     dispatch(fetchFeaturedChartsAction());
     dispatch(fetchArtistsListAction());
+    dispatch(fetchPodcastsListAction());
   }, []);
 
   return (

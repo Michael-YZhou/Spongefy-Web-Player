@@ -131,3 +131,23 @@ By calling this API, you can retrieve a list of singer categories.
 - `/artist/list?type=1&area=96&initial=b` (Male singers from Western countries whose names start with "b")
 - `/artist/list?type=2&area=2&initial=b` (Female singers from a specific area with names starting with "b")
 - `/artist/list?type=-1&area=96` (All English singers)
+
+## Recommended Programs
+
+### Description
+
+By calling this API, you can retrieve recommended radio programs.
+
+### API Endpoint
+
+`/program/recommend`
+
+### Optional Parameters
+
+- **limit**: The number of results returned. Default is **10**.
+- **offset**: The offset value for pagination. For example, use `(page number - 1) * 10`, where **10** is the limit value. Default is **0**.
+
+### Example Call
+
+- `/program/recommend?limit=5` (5 recommended radio/podcast)
+- `/program/recommend?limit=10` (10 recommended radio/podcast)

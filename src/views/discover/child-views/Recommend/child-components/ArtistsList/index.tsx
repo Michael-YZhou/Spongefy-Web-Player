@@ -27,7 +27,7 @@ const ArtistsList: FC<IProps> = () => {
         moreText="show all &gt;"
         moreLink="/discover/artist"
       />
-      <div className="artist-list">
+      <div className="artists-list">
         {artistsList.map((artist) => {
           return (
             <Link to="/discover/artist" key={artist.id} className="item">

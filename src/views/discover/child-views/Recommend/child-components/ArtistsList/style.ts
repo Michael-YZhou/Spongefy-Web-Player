@@ -3,7 +3,7 @@ import styled from 'styled-components';
 export const ArtistsListWrapper = styled.div`
   padding: 20px;
 
-  .artist-list {
+  .artists-list {
     .item {
       display: flex;
       height: 62px;
