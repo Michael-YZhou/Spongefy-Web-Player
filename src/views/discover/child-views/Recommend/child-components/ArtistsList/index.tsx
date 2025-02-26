@@ -25,12 +25,12 @@ const ArtistsList: FC<IProps> = () => {
       <SectionHeaderV2
         title="Featured Artists"
         moreText="show all &gt;"
-        moreLink="/discover/artists"
+        moreLink="/discover/artist"
       />
       <div className="artist-list">
         {artistsList.map((artist) => {
           return (
-            <Link to="/discover/artists" key={artist.id} className="item">
+            <Link to="/discover/artist" key={artist.id} className="item">
               <img src={formatImageSize(artist.picUrl, 62)} alt={artist.name} />
               <div className="info">
                 <div className="name">{artist.name}</div>
