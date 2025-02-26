@@ -4,12 +4,14 @@ import type {
   IPopularAlbumData,
   INewAlbumData,
   IPlaylist,
+  IArtist,
 } from '../type';
 import {
   getBanners,
   getPopularAlbums,
   getNewAlbums,
   getPlayListDetail,
+  getArtistsList,
 } from '../service/recommend';
 
 // create an async thunk to fetch the banner data
@@ -49,12 +51,21 @@ export const fetchFeaturedChartsAction = createAsyncThunk(
   },
 );
 
+export const fetchArtistsListAction = createAsyncThunk(
+  'recommend/fetchArtistsList',
+  async (arg, { dispatch }) => {
+    const res = await getArtistsList(-1, 96, 5);
+    return res.artists;
+  },
+);
+
 // define the recommend state data structure
 interface IRecommendState {
   banners: IBannerData[];
   popularAlbums: IPopularAlbumData[];
   newAlbums: INewAlbumData[];
   featuredCharts: IPlaylist[];
+  artistsList: IArtist[];
 }
 
 const initialState: IRecommendState = {
@@ -62,6 +73,7 @@ const initialState: IRecommendState = {
   popularAlbums: [],
   newAlbums: [],
   featuredCharts: [],
+  artistsList: [],
 };
 
 // create a slice to manage the recommend state
@@ -114,6 +126,17 @@ const recommendSlice = createSlice({
       })
       .addCase(fetchFeaturedChartsAction.rejected, () => {
         console.log('fetch featured charts rejected');
+      })
+      // handle the fetch artists list async thunk
+      .addCase(fetchArtistsListAction.pending, () => {
+        console.log('fetching artists list pending...');
+      })
+      .addCase(fetchArtistsListAction.fulfilled, (state, action) => {
+        console.log('fetch artists list fulfilled');
+        state.artistsList = action.payload;
+      })
+      .addCase(fetchArtistsListAction.rejected, () => {
+        console.log('fetch artists list rejected');
       });
   },
 });

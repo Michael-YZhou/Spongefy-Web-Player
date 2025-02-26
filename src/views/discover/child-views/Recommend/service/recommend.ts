@@ -6,6 +6,7 @@ import {
   popularAlbums,
   newAlbums,
   featuredCharts,
+  artistsList,
 } from '@/assets/data/api-data';
 
 // this is a service file that is used to make API calls
@@ -43,4 +44,16 @@ export function getPlayListDetail(id: number) {
   return Promise.resolve(
     featuredCharts.find((chart) => chart.playlist.id === id),
   );
+}
+
+export function getArtistsList(type: number, area: number, limit = 30) {
+  // return httpClient.get({
+  //   url: '/artist/list',
+  //   params: {
+  //     type,
+  //     area,
+  //     limit,
+  //   },
+  // });
+  return Promise.resolve({ artists: artistsList.slice(0, limit) });
 }

@@ -51,39 +51,6 @@ export interface IPopularAlbumData {
  * ****************************** New Albums Section ******************************
  */
 
-interface Artist {
-  name: string;
-  id: number;
-  picId: number;
-  img1v1Id: number;
-  briefDesc: string;
-  picUrl: string;
-  img1v1Url: string;
-  albumSize: number;
-  alias: string[];
-  trans: string;
-  musicSize: number;
-  topicPerson: number;
-  picId_str: string;
-  img1v1Id_str: string;
-}
-
-interface Artist2 {
-  name: string;
-  id: number;
-  picId: number;
-  img1v1Id: number;
-  briefDesc: string;
-  picUrl: string;
-  img1v1Url: string;
-  albumSize: number;
-  alias: any[];
-  trans: string;
-  musicSize: number;
-  topicPerson: number;
-  img1v1Id_str: string;
-}
-
 export interface INewAlbumData {
   name: string;
   id: number;
@@ -99,13 +66,13 @@ export interface INewAlbumData {
   tags: string;
   company: string;
   briefDesc: string;
-  artist: Artist;
+  artist: any;
   songs: any;
   alias: any[];
   status: number;
   copyrightId: number;
   commentThreadId: string;
-  artists: Artist2[];
+  artists: any[];
   paid: boolean;
   onSale: boolean;
   picId_str: string;
@@ -241,4 +208,35 @@ interface Track {
   mv: number;
   publishTime: number;
   tns?: string[];
+}
+
+/*
+ * ****************************** Artists List Section ******************************
+ */
+
+export interface IArtistsListData {
+  artists: IArtist[];
+  more: boolean;
+  code: number;
+}
+
+export interface IArtist {
+  accountId?: number;
+  albumSize: number;
+  alias: string[];
+  briefDesc: string;
+  fansCount: number;
+  followed: boolean;
+  id: number;
+  img1v1Id: number;
+  img1v1Id_str: string;
+  img1v1Url: string;
+  musicSize: number;
+  name: string;
+  picId: number;
+  picId_str: string;
+  picUrl: string;
+  topicPerson: number;
+  trans: string;
+  transNames?: string[];
 }

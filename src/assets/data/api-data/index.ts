@@ -6,6 +6,7 @@ import newAlbumsData from './api-album-newest.json';
 import hotChartData from './api-playlist-detail-id-19723756.json';
 import newSongData from './api-playlist-detail-id-3779629.json';
 import originalData from './api-playlist-detail-id-2884035.json';
+import artistsListData from './api-artist-list.json';
 
 // Types for the data
 import type {
@@ -13,6 +14,7 @@ import type {
   IPopularAlbumData,
   INewAlbumData,
   IFeaturedChartData,
+  IArtist,
 } from '@/views/Discover/child-views/Recommend/type';
 
 // Export the data for the recommend page
@@ -24,3 +26,4 @@ export const featuredCharts: IFeaturedChartData[] = [
   newSongData,
   originalData,
 ];
+export const artistsList: IArtist[] = artistsListData.artists;
