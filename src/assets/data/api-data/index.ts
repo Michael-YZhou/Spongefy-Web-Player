@@ -8,6 +8,7 @@ import newSongData from './api-playlist-detail-id-3779629.json';
 import originalData from './api-playlist-detail-id-2884035.json';
 import artistsListData from './api-artist-list.json';
 import podcastsListData from './api-program-recommend.json';
+import songDetailData from './api-song-detail-ids-25830169.json';
 
 // Types for the data
 import type {
@@ -18,6 +19,8 @@ import type {
   IArtist,
   IPodcast,
 } from '@/views/Discover/child-views/Recommend/type';
+
+import type { ISong } from '@/views/Player/type';
 
 // Export the data for the recommend page
 export const banners: IBannerData[] = bannerData.banners;
@@ -30,3 +33,4 @@ export const featuredCharts: IFeaturedChartData[] = [
 ];
 export const artistsList: IArtist[] = artistsListData.artists;
 export const podcastsList: IPodcast[] = podcastsListData.programs;
+export const songDetail: ISong = songDetailData.songs[0];

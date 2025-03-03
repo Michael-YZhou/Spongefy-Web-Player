@@ -1,0 +1,156 @@
+{
+  "songs": [
+    {
+      "name": "嘉沃特舞曲",
+      "id": 25830169,
+      "pst": 0,
+      "t": 0,
+      "ar": [
+        {
+          "id": 36490,
+          "name": "Johann Sebastian Bach",
+          "tns": [],
+          "alias": []
+        }
+      ],
+      "alia": [],
+      "pop": 95,
+      "st": 0,
+      "rt": "",
+      "fee": 0,
+      "v": 673,
+      "crbt": null,
+      "cf": "",
+      "al": {
+        "id": 2329697,
+        "name": "世界著名交响乐团演奏的古典音乐系列之一 世界著名抒情音乐小品",
+        "picUrl": "https://p1.music.126.net/fzpX1PppXWeR3BtwlC2dWg==/2531075768909159.jpg",
+        "tns": [],
+        "pic": 2531075768909159
+      },
+      "dt": 192172,
+      "h": {
+        "br": 320000,
+        "fid": 0,
+        "size": 7689448,
+        "vd": 122421,
+        "sr": 44100
+      },
+      "m": {
+        "br": 192000,
+        "fid": 0,
+        "size": 4613686,
+        "vd": 125064,
+        "sr": 44100
+      },
+      "l": {
+        "br": 128000,
+        "fid": 0,
+        "size": 3075805,
+        "vd": 126874,
+        "sr": 44100
+      },
+      "sq": {
+        "br": 529006,
+        "fid": 0,
+        "size": 12707565,
+        "vd": 122421,
+        "sr": 44100
+      },
+      "hr": null,
+      "a": null,
+      "cd": "1",
+      "no": 13,
+      "rtUrl": null,
+      "ftype": 0,
+      "rtUrls": [],
+      "djId": 0,
+      "copyright": 0,
+      "s_id": 0,
+      "mark": 131072,
+      "originCoverType": 0,
+      "originSongSimpleData": null,
+      "tagPicList": null,
+      "resourceState": true,
+      "version": 673,
+      "songJumpInfo": null,
+      "entertainmentTags": null,
+      "awardTags": null,
+      "displayTags": null,
+      "single": 0,
+      "noCopyrightRcmd": null,
+      "mv": 0,
+      "rtype": 0,
+      "rurl": null,
+      "mst": 9,
+      "cp": 0,
+      "publishTime": 1104508800004
+    }
+  ],
+  "privileges": [
+    {
+      "id": 25830169,
+      "fee": 0,
+      "payed": 0,
+      "st": 0,
+      "pl": 320000,
+      "dl": 999000,
+      "sp": 7,
+      "cp": 1,
+      "subp": 1,
+      "cs": false,
+      "maxbr": 999000,
+      "fl": 320000,
+      "toast": false,
+      "flag": 0,
+      "preSell": false,
+      "playMaxbr": 999000,
+      "downloadMaxbr": 999000,
+      "maxBrLevel": "lossless",
+      "playMaxBrLevel": "lossless",
+      "downloadMaxBrLevel": "lossless",
+      "plLevel": "exhigh",
+      "dlLevel": "lossless",
+      "flLevel": "exhigh",
+      "rscl": null,
+      "freeTrialPrivilege": {
+        "resConsumable": false,
+        "userConsumable": false,
+        "listenType": null,
+        "cannotListenReason": null,
+        "playReason": null,
+        "freeLimitTagType": null
+      },
+      "rightSource": 0,
+      "chargeInfoList": [
+        {
+          "rate": 128000,
+          "chargeUrl": null,
+          "chargeMessage": null,
+          "chargeType": 0
+        },
+        {
+          "rate": 192000,
+          "chargeUrl": null,
+          "chargeMessage": null,
+          "chargeType": 0
+        },
+        {
+          "rate": 320000,
+          "chargeUrl": null,
+          "chargeMessage": null,
+          "chargeType": 0
+        },
+        {
+          "rate": 999000,
+          "chargeUrl": null,
+          "chargeMessage": null,
+          "chargeType": 1
+        }
+      ],
+      "code": 0,
+      "message": null
+    }
+  ],
+  "code": 200
+}
