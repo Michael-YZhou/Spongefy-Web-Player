@@ -23,6 +23,7 @@ const MusicWidget: FC<IProps> = () => {
   const [progress, setProgress] = useState(0);
   const [duration, setDuration] = useState(0);
   const [currentTime, setCurrentTime] = useState(0);
+  const [isSliding, setIsSliding] = useState(false);
   const audioRef = useRef<HTMLAudioElement>(null);
 
   const { currentSong } = useAppSelector(
@@ -54,14 +55,20 @@ const MusicWidget: FC<IProps> = () => {
   // handle progress bar status
   function handleTimeUpdate() {
     if (audioRef.current) {
+      // get current time of audio element
       const currentTime = audioRef.current.currentTime * 1000; // convert to ms
-      const progress = (currentTime / duration) * 100;
-      setProgress(progress);
-      // set current time
-      setCurrentTime(currentTime);
+      if (!isSliding) {
+        // calculate current progress
+        const progress = (currentTime / duration) * 100;
+        setCurrentTime(currentTime);
+        // set current time
+        setProgress(progress);
+      }
     }
   }
 
+  /** handle events happen inside the component */
+  // handle play button click
   function handlePlayBtnClick() {
     // play or pause music
     if (isPlaying) {
@@ -73,6 +80,26 @@ const MusicWidget: FC<IProps> = () => {
     }
     // toggle play state
     setIsPlaying(!isPlaying);
+  }
+
+  // handle slider when change (passes in the new slider value when sliding)
+  function handleSliderChange(value: number) {
+    console.log(value);
+    setIsSliding(true); // user is sliding
+    // set the progress bar value to the slider value
+    setProgress(value);
+  }
+
+  // handle slider when change complete (mouse up)
+  function handleChangeComplete(value: number) {
+    console.log(value);
+    // calculate current time based on slider value
+    const currentTime = (value / 100) * duration;
+    // set current time of audio element
+    audioRef.current!.currentTime = currentTime / 1000; // convert from ms to s
+    setCurrentTime(currentTime);
+    // setProgress(value);
+    setIsSliding(false);
   }
 
   return (
@@ -102,9 +129,11 @@ const MusicWidget: FC<IProps> = () => {
             <div className="progress">
               {/* antd Slider component */}
               <Slider
+                step={0.5}
                 value={progress}
-                step={0.2}
                 tooltip={{ formatter: null }}
+                onChange={handleSliderChange}
+                onChangeComplete={handleChangeComplete}
               />
               <div className="time">
                 <span className="current">{formatTime(currentTime)}</span>
