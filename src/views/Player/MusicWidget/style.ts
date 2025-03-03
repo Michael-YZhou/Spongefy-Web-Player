@@ -26,10 +26,10 @@ export const MusicWidgetWrapper = styled.div`
 `;
 
 export interface IWidgetPlayControl {
-  isPlaying: boolean;
+  $isPlaying: boolean;
 }
 
-export const WidgetPlayControl = styled.div`
+export const WidgetPlayControl = styled.div<IWidgetPlayControl>`
   display: flex;
   align-items: center;
 
@@ -51,7 +51,9 @@ export const WidgetPlayControl = styled.div`
     width: 36px;
     height: 36px;
     margin: 0 8px;
-    background-position: 0 -204px;
+    /* background-position: 0 -204px; */
+    background-position: ${(props: IWidgetPlayControl) =>
+      props.$isPlaying ? '0 -165px' : '0 -204px'};
   }
 
   .next {

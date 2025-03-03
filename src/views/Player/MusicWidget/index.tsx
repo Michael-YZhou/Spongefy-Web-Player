@@ -1,4 +1,4 @@
-import { memo } from 'react';
+import { memo, useEffect, useState, useRef } from 'react';
 import type { FC, ReactNode } from 'react';
 import { Link } from 'react-router-dom';
 import { Slider } from 'antd';
@@ -11,6 +11,7 @@ import {
 import { useAppSelector } from '@/hooks/useAppSelector';
 import { shallowEqual } from 'react-redux';
 import { formatImageSize } from '@/utils/format';
+import { getSongPlayUrl } from '@/utils/getUrl';
 
 interface IProps {
   children?: ReactNode;
@@ -18,6 +19,10 @@ interface IProps {
 }
 
 const MusicWidget: FC<IProps> = () => {
+  const [isPlaying, setIsPlaying] = useState(false);
+  const [progress, setProgress] = useState(0);
+  const audioRef = useRef<HTMLAudioElement>(null);
+
   const { currentSong } = useAppSelector(
     (state) => ({
       currentSong: state.player.currentSong,
@@ -25,12 +30,43 @@ const MusicWidget: FC<IProps> = () => {
     shallowEqual,
   );
 
+  useEffect(() => {
+    // set music url when currentSong changes
+    audioRef.current!.src = getSongPlayUrl(currentSong.id);
+    // play music when currentSong changes
+    audioRef.current
+      ?.play()
+      .then(() => {
+        console.log('Music is playing');
+      })
+      .catch((err) => {
+        setIsPlaying(false);
+        console.log('music play failed', err);
+      });
+  }, [currentSong]);
+
+  const handlePlayBtnClick = () => {
+    // play or pause music
+    if (isPlaying) {
+      audioRef.current?.pause();
+    } else {
+      audioRef.current?.play().catch(() => {
+        setIsPlaying(false);
+      });
+    }
+    // toggle play state
+    setIsPlaying(!isPlaying);
+  };
+
   return (
     <MusicWidgetWrapper className="sprite_playbar">
       <div className="content wrap-v2">
-        <WidgetPlayControl>
+        <WidgetPlayControl $isPlaying={isPlaying}>
           <button className="btn sprite_playbar prev"></button>
-          <button className="btn sprite_playbar play"></button>
+          <button
+            className="btn sprite_playbar play"
+            onClick={handlePlayBtnClick}
+          ></button>
           <button className="btn sprite_playbar next"></button>
         </WidgetPlayControl>
         <WidgetPlayInfo>
@@ -47,7 +83,8 @@ const MusicWidget: FC<IProps> = () => {
               <span className="singer-name">{currentSong?.ar[0]?.name}</span>
             </div>
             <div className="progress">
-              <Slider />
+              {/* antd Slider component */}
+              <Slider value={progress} />
               <div className="time">
                 <span className="current">00:52</span>
                 <span className="divider">/</span>
@@ -69,6 +106,7 @@ const MusicWidget: FC<IProps> = () => {
           </div>
         </WidgetOperator>
       </div>
+      <audio ref={audioRef} />
     </MusicWidgetWrapper>
   );
 };

@@ -1,6 +1,7 @@
 import { memo } from 'react';
 import type { FC, ReactNode } from 'react';
 import { Link } from 'react-router-dom';
+import { shallowEqual } from 'react-redux';
 import { PodcastsListWrapper } from './style';
 import SectionHeaderV2 from '@/components/SectionHeaderV2';
 import { useAppSelector } from '@/hooks/useAppSelector';
@@ -11,9 +12,12 @@ interface IProps {
 }
 
 const PodcastsList: FC<IProps> = () => {
-  const { podcastsList } = useAppSelector((state) => ({
-    podcastsList: state.recommend.podcastsList,
-  }));
+  const { podcastsList } = useAppSelector(
+    (state) => ({
+      podcastsList: state.recommend.podcastsList,
+    }),
+    shallowEqual,
+  );
 
   return (
     <PodcastsListWrapper>
