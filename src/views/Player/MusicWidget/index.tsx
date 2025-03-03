@@ -10,8 +10,8 @@ import {
   WidgetPlayInfo,
 } from './style';
 import { useAppSelector } from '@/hooks/useAppSelector';
-import { formatImageSize } from '@/utils/format';
-import { getSongPlayUrl } from '@/utils/getUrl';
+import { formatImageSize, formatTime } from '@/utils/format';
+import { getSongPlayUrl } from '@/utils/playerUtils';
 
 interface IProps {
   children?: ReactNode;
@@ -22,6 +22,7 @@ const MusicWidget: FC<IProps> = () => {
   const [isPlaying, setIsPlaying] = useState(false);
   const [progress, setProgress] = useState(0);
   const [duration, setDuration] = useState(0);
+  const [currentTime, setCurrentTime] = useState(0);
   const audioRef = useRef<HTMLAudioElement>(null);
 
   const { currentSong } = useAppSelector(
@@ -53,9 +54,11 @@ const MusicWidget: FC<IProps> = () => {
   // handle progress bar status
   function handleTimeUpdate() {
     if (audioRef.current) {
-      const currentTime = audioRef.current.currentTime;
-      const progress = ((currentTime * 1000) / duration) * 100;
+      const currentTime = audioRef.current.currentTime * 1000; // convert to ms
+      const progress = (currentTime / duration) * 100;
       setProgress(progress);
+      // set current time
+      setCurrentTime(currentTime);
     }
   }
 
@@ -104,9 +107,9 @@ const MusicWidget: FC<IProps> = () => {
                 tooltip={{ formatter: null }}
               />
               <div className="time">
-                <span className="current">00:52</span>
+                <span className="current">{formatTime(currentTime)}</span>
                 <span className="divider">/</span>
-                <span className="duration">04:35</span>
+                <span className="duration">{formatTime(duration)}</span>
               </div>
             </div>
           </div>

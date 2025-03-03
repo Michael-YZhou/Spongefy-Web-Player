@@ -17,3 +17,12 @@ export function formatImageSize(
 ) {
   return imageUrl + `?param=${width}y${height}`;
 }
+
+export function formatTime(time: number) {
+  const timeInSeconds = time / 1000;
+  const min = Math.floor(timeInSeconds / 60);
+  const sec = Math.floor(timeInSeconds % 60);
+  const formatMinute = min < 10 ? '0' + min : min;
+  const formatSecond = sec < 10 ? '0' + sec : sec;
+  return `${formatMinute}:${formatSecond}`;
+}
