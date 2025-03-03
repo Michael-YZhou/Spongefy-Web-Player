@@ -51,7 +51,6 @@ export const WidgetPlayControl = styled.div<IWidgetPlayControl>`
     width: 36px;
     height: 36px;
     margin: 0 8px;
-    /* background-position: 0 -204px; */
     background-position: ${(props: IWidgetPlayControl) =>
       props.$isPlaying ? '0 -165px' : '0 -204px'};
   }

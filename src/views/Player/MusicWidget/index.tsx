@@ -1,5 +1,6 @@
 import { memo, useEffect, useState, useRef } from 'react';
 import type { FC, ReactNode } from 'react';
+import { shallowEqual } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { Slider } from 'antd';
 import {
@@ -9,7 +10,6 @@ import {
   WidgetPlayInfo,
 } from './style';
 import { useAppSelector } from '@/hooks/useAppSelector';
-import { shallowEqual } from 'react-redux';
 import { formatImageSize } from '@/utils/format';
 import { getSongPlayUrl } from '@/utils/getUrl';
 
@@ -21,6 +21,7 @@ interface IProps {
 const MusicWidget: FC<IProps> = () => {
   const [isPlaying, setIsPlaying] = useState(false);
   const [progress, setProgress] = useState(0);
+  const [duration, setDuration] = useState(0);
   const audioRef = useRef<HTMLAudioElement>(null);
 
   const { currentSong } = useAppSelector(
@@ -37,15 +38,28 @@ const MusicWidget: FC<IProps> = () => {
     audioRef.current
       ?.play()
       .then(() => {
+        setIsPlaying(true);
         console.log('Music is playing');
       })
       .catch((err) => {
         setIsPlaying(false);
         console.log('music play failed', err);
       });
+
+    // set song duration
+    setDuration(currentSong.dt);
   }, [currentSong]);
 
-  const handlePlayBtnClick = () => {
+  // handle progress bar status
+  function handleTimeUpdate() {
+    if (audioRef.current) {
+      const currentTime = audioRef.current.currentTime;
+      const progress = ((currentTime * 1000) / duration) * 100;
+      setProgress(progress);
+    }
+  }
+
+  function handlePlayBtnClick() {
     // play or pause music
     if (isPlaying) {
       audioRef.current?.pause();
@@ -56,7 +70,7 @@ const MusicWidget: FC<IProps> = () => {
     }
     // toggle play state
     setIsPlaying(!isPlaying);
-  };
+  }
 
   return (
     <MusicWidgetWrapper className="sprite_playbar">
@@ -84,7 +98,11 @@ const MusicWidget: FC<IProps> = () => {
             </div>
             <div className="progress">
               {/* antd Slider component */}
-              <Slider value={progress} />
+              <Slider
+                value={progress}
+                step={0.2}
+                tooltip={{ formatter: null }}
+              />
               <div className="time">
                 <span className="current">00:52</span>
                 <span className="divider">/</span>
@@ -106,7 +124,7 @@ const MusicWidget: FC<IProps> = () => {
           </div>
         </WidgetOperator>
       </div>
-      <audio ref={audioRef} />
+      <audio ref={audioRef} onTimeUpdate={handleTimeUpdate} />
     </MusicWidgetWrapper>
   );
 };
