@@ -88,6 +88,9 @@ const MusicWidget: FC<IProps> = () => {
     setIsSliding(true); // user is sliding
     // set the progress bar value to the slider value
     setProgress(value);
+    // while sliding, calculate current time based on slider value (ms) and set it to currentTime
+    const currentTime = (value / 100) * duration;
+    setCurrentTime(currentTime);
   }
 
   // handle slider when change complete (mouse up)
