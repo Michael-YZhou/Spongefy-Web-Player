@@ -17,7 +17,7 @@ const NewAlbums: FC<IProps> = () => {
   // create a ref for carousel for controlling carousel
   const carouselRef = useRef<CarouselRef>(null);
 
-  const { newAlbums } = useAppSelector(
+  const { newAlbums = [] } = useAppSelector(
     (state) => ({
       newAlbums: state.recommend.newAlbums,
     }),

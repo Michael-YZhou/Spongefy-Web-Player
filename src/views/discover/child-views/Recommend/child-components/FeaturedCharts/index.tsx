@@ -12,7 +12,7 @@ interface IProps {
 }
 
 const FeaturedCharts: FC<IProps> = () => {
-  const { featuredCharts } = useAppSelector(
+  const { featuredCharts = [] } = useAppSelector(
     (state) => ({
       featuredCharts: state.recommend.featuredCharts,
     }),

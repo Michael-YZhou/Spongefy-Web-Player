@@ -12,7 +12,7 @@ interface IProps {
 }
 
 const Popular: FC<IProps> = () => {
-  const { popularAlbums } = useAppSelector((state) => {
+  const { popularAlbums = [] } = useAppSelector((state) => {
     return { popularAlbums: state.recommend.popularAlbums };
   }, shallowEqual);
 

@@ -127,12 +127,12 @@ const MusicWidget: FC<IProps> = () => {
           <div className="info">
             <div className="song">
               <span className="song-name">{currentSong.name}</span>
-              <span className="singer-name">{currentSong?.ar[0]?.name}</span>
+              <span className="singer-name">{currentSong?.ar?.[0]?.name}</span>
             </div>
             <div className="progress">
               {/* antd Slider component */}
               <Slider
-                step={0.5}
+                step={0.2}
                 value={progress}
                 tooltip={{ formatter: null }}
                 onChange={handleSliderChange}

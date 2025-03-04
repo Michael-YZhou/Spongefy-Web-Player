@@ -13,7 +13,7 @@ interface IProps {
 }
 
 const ArtistsList: FC<IProps> = () => {
-  const { artistsList } = useAppSelector(
+  const { artistsList = [] } = useAppSelector(
     (state) => ({
       artistsList: state.recommend.artistsList,
     }),

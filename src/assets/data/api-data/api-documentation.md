@@ -168,6 +168,7 @@ By calling this API, you can retrieve recommended radio programs.
 
 - `/song/detail?ids=347230`
 - `/song/detail?ids=347230,347231`
+- `http://codercba.com:9002/song/detail?ids=25830169`
 
 **返回字段说明:**
 
