@@ -1,64 +1,70 @@
 {
   "songs": [
     {
-      "name": "Starlight",
-      "id": 2678323483,
+      "name": "Dream Love",
+      "id": 2645585433,
       "pst": 0,
       "t": 0,
       "ar": [
         {
-          "id": 32440240,
-          "name": "逗逗不吃豆",
+          "id": 33574298,
+          "name": "DLSS",
           "tns": [],
           "alias": []
         }
       ],
       "alia": [],
-      "pop": 85,
+      "pop": 100,
       "st": 0,
       "rt": "",
       "fee": 8,
-      "v": 6,
+      "v": 9,
       "crbt": null,
       "cf": "",
       "al": {
-        "id": 263856363,
-        "name": "star",
-        "picUrl": "https://p1.music.126.net/Y6OswBGv2rMz1-JdDUpbAg==/109951170514700308.jpg",
+        "id": 253408813,
+        "name": "Dream Love",
+        "picUrl": "https://p1.music.126.net/YnO8q5KEhhVKwUk3WSLD8Q==/109951170152967827.jpg",
         "tns": [],
-        "pic_str": "109951170514700308",
-        "pic": 109951170514700300
+        "pic_str": "109951170152967827",
+        "pic": 109951170152967820
       },
-      "dt": 196719,
+      "dt": 139974,
       "h": {
         "br": 320000,
         "fid": 0,
-        "size": 7871085,
-        "vd": -8184,
+        "size": 5601645,
+        "vd": -45618,
         "sr": 48000
       },
       "m": {
         "br": 192000,
         "fid": 0,
-        "size": 4722669,
-        "vd": -5575,
+        "size": 3361005,
+        "vd": -42999,
         "sr": 48000
       },
       "l": {
         "br": 128000,
         "fid": 0,
-        "size": 3148461,
-        "vd": -3881,
+        "size": 2240685,
+        "vd": -41328,
         "sr": 48000
       },
       "sq": {
-        "br": 800215,
+        "br": 891861,
         "fid": 0,
-        "size": 19680919,
-        "vd": -8179,
+        "size": 15604698,
+        "vd": -47279,
         "sr": 48000
       },
-      "hr": null,
+      "hr": {
+        "br": 1660328,
+        "fid": 0,
+        "size": 29050401,
+        "vd": -45560,
+        "sr": 48000
+      },
       "a": null,
       "cd": "01",
       "no": 1,
@@ -68,29 +74,30 @@
       "djId": 0,
       "copyright": 0,
       "s_id": 0,
-      "mark": 270336,
-      "originCoverType": 0,
+      "mark": 537141248,
+      "originCoverType": 1,
       "originSongSimpleData": null,
       "tagPicList": null,
       "resourceState": true,
-      "version": 6,
+      "version": 9,
       "songJumpInfo": null,
       "entertainmentTags": null,
       "awardTags": null,
       "displayTags": null,
       "single": 0,
       "noCopyrightRcmd": null,
+      "mv": 0,
       "rtype": 0,
       "rurl": null,
       "mst": 9,
       "cp": 0,
-      "mv": 0,
-      "publishTime": 0
+      "publishTime": 1731254400000,
+      "tns": ["恋梦"]
     }
   ],
   "privileges": [
     {
-      "id": 2678323483,
+      "id": 2645585433,
       "fee": 8,
       "payed": 0,
       "st": 0,
@@ -107,9 +114,9 @@
       "preSell": false,
       "playMaxbr": 999000,
       "downloadMaxbr": 999000,
-      "maxBrLevel": "lossless",
-      "playMaxBrLevel": "lossless",
-      "downloadMaxBrLevel": "lossless",
+      "maxBrLevel": "hires",
+      "playMaxBrLevel": "hires",
+      "downloadMaxBrLevel": "hires",
       "plLevel": "standard",
       "dlLevel": "none",
       "flLevel": "exhigh",
@@ -144,6 +151,12 @@
         },
         {
           "rate": 999000,
+          "chargeUrl": null,
+          "chargeMessage": null,
+          "chargeType": 1
+        },
+        {
+          "rate": 1999000,
           "chargeUrl": null,
           "chargeMessage": null,
           "chargeType": 1

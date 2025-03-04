@@ -84,7 +84,6 @@ const MusicWidget: FC<IProps> = () => {
 
   // handle slider when change (passes in the new slider value when sliding)
   function handleSliderChange(value: number) {
-    console.log(value);
     setIsSliding(true); // user is sliding
     // set the progress bar value to the slider value
     setProgress(value);

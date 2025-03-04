@@ -8,3 +8,12 @@ export function getSongDetail(ids: number) {
     },
   });
 }
+
+export function getSongLyric(id: number) {
+  return httpClient.get({
+    url: '/lyric',
+    params: {
+      id,
+    },
+  });
+}

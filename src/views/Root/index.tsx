@@ -5,7 +5,10 @@ import Footer from '../../components/Footer';
 import MusicWidget from '../Player/MusicWidget';
 
 import { useEffect } from 'react';
-import { fetchCurrentSongAction } from '@/views/Player/store/player';
+import {
+  fetchCurrentSongAction,
+  fetchCurrentLyricAction,
+} from '@/views/Player/store/player';
 import { useAppDispatch } from '@/hooks/useAppDispach';
 interface IRoot {
   children?: ReactNode;
@@ -16,7 +19,8 @@ const Root: FC<IRoot> = () => {
   // fetch a song when app is mounted
   const dispatch = useAppDispatch();
   useEffect(() => {
-    dispatch(fetchCurrentSongAction(2678323483));
+    dispatch(fetchCurrentSongAction(2645585433));
+    dispatch(fetchCurrentLyricAction(2645585433));
   }, []);
 
   return (
