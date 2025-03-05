@@ -2,7 +2,7 @@ import { memo, useEffect, useState, useRef } from 'react';
 import type { FC, ReactNode } from 'react';
 import { shallowEqual } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { Slider } from 'antd';
+import { Slider, message } from 'antd';
 import {
   MusicWidgetWrapper,
   WidgetPlayControl,
@@ -10,8 +10,10 @@ import {
   WidgetPlayInfo,
 } from './style';
 import { useAppSelector } from '@/hooks/useAppSelector';
+import { useAppDispatch } from '@/hooks/useAppDispach';
 import { formatImageSize, formatTime } from '@/utils/format';
 import { getSongPlayUrl } from '@/utils/playerUtils';
+import { changeLyricIndexAction } from '@/views/Player/store/player';
 
 interface IProps {
   children?: ReactNode;
@@ -26,12 +28,18 @@ const MusicWidget: FC<IProps> = () => {
   const [isSliding, setIsSliding] = useState(false);
   const audioRef = useRef<HTMLAudioElement>(null);
 
-  const { currentSong } = useAppSelector(
+  const [messageApi, contextHolder] = message.useMessage();
+
+  const { currentSong, lyrics, lyricIndex } = useAppSelector(
     (state) => ({
       currentSong: state.player.currentSong,
+      lyrics: state.player.lyrics,
+      lyricIndex: state.player.lyricIndex,
     }),
     shallowEqual,
   );
+
+  const dispatch = useAppDispatch();
 
   useEffect(() => {
     // set music url when currentSong changes
@@ -65,6 +73,33 @@ const MusicWidget: FC<IProps> = () => {
         setProgress(progress);
       }
     }
+
+    //match lyrics with current time
+    let index = lyrics.length - 1;
+    for (let i = 0; i < lyrics.length; i++) {
+      if (lyrics[i].time > currentTime) {
+        index = i - 1;
+        break;
+      }
+    }
+
+    // update lyric index in store when index changes or is not default value -1
+    // console.log(index, lyricIndex);
+    if (index === lyricIndex || index === -1) return;
+    dispatch(changeLyricIndexAction(index));
+
+    // show lyric
+    const currentLyric = lyrics[index];
+    console.log(currentLyric.text);
+    messageApi.open({
+      key: 'lyric', // same key will not show multiple message
+      content: currentLyric.text,
+      duration: 0,
+      style: {
+        bottom: '60px',
+      },
+      className: 'lyric-message',
+    });
   }
 
   /** handle events happen inside the component */
@@ -158,6 +193,9 @@ const MusicWidget: FC<IProps> = () => {
           </div>
         </WidgetOperator>
       </div>
+      {/* display the lyric line in the message component */}
+      {contextHolder}
+      {/* audio element */}
       <audio ref={audioRef} onTimeUpdate={handleTimeUpdate} />
     </MusicWidgetWrapper>
   );

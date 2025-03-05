@@ -8,7 +8,8 @@ import newSongData from './api-playlist-detail-id-3779629.json';
 import originalData from './api-playlist-detail-id-2884035.json';
 import artistsListData from './api-artist-list.json';
 import podcastsListData from './api-program-recommend.json';
-import songDetailData from './api-song-detail-ids-2645585433.json';
+import songDetailData01 from './api-song-detail-ids-2645585433.json';
+import songDetailData02 from './api-song-detail-ids-2644225034.json';
 
 // Types for the data
 import type {
@@ -33,4 +34,5 @@ export const featuredCharts: IFeaturedChartData[] = [
 ];
 export const artistsList: IArtist[] = artistsListData.artists;
 export const podcastsList: IPodcast[] = podcastsListData.programs;
-export const songDetail: ISong = songDetailData.songs[0];
+export const songDetail01: ISong = songDetailData01.songs[0];
+export const songDetail02: ISong = songDetailData02.songs[0];

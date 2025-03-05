@@ -4,7 +4,8 @@ import type { ISong, ILyricLine } from '@/views/Player/type';
 import { getSongDetail, getSongLyric } from '../service/player';
 import { parseLyric } from '@/utils/parse-lyric';
 
-import { songDetail } from '@/assets/data/api-data'; // replace this later with your api data
+import { songDetail01 } from '@/assets/data/api-data'; // replace this later with your api data
+import { songDetail02 } from '@/assets/data/api-data'; // replace this later with your api data
 
 // fetch current song information
 export const fetchCurrentSongAction = createAsyncThunk(
@@ -26,24 +27,35 @@ export const fetchCurrentLyricAction = createAsyncThunk(
 
     // parse lyric string
     const lyricLines = parseLyric(lyricString);
+    // console.log(lyricLines);
     return lyricLines;
   },
 );
 
 interface IPlayerState {
   currentSong: ISong;
-  currentLyric: ILyricLine[];
+  lyrics: ILyricLine[];
+  lyricIndex: number;
+  playSongList: ISong[];
+  playSongIndex: number;
 }
 
 const initialState: IPlayerState = {
   currentSong: {},
-  currentLyric: [],
+  lyrics: [],
+  lyricIndex: -1,
+  playSongList: [songDetail01, songDetail02],
+  playSongIndex: -1,
 };
 
 const playerSlice = createSlice({
   name: 'player',
   initialState: initialState,
-  reducers: {},
+  reducers: {
+    changeLyricIndexAction(state, { payload }) {
+      state.lyricIndex = payload;
+    },
+  },
   extraReducers: (builder) => {
     builder
       // fetch current song information
@@ -62,7 +74,7 @@ const playerSlice = createSlice({
       })
       .addCase(fetchCurrentLyricAction.fulfilled, (state, action) => {
         console.log('fetch Current Lyric fulfilled');
-        state.currentLyric = action.payload;
+        state.lyrics = action.payload;
       })
       .addCase(fetchCurrentLyricAction.rejected, (state, action) => {
         console.log('fetch Current Lyric rejected');
@@ -70,4 +82,5 @@ const playerSlice = createSlice({
   },
 });
 
+export const { changeLyricIndexAction } = playerSlice.actions;
 export default playerSlice.reducer;
