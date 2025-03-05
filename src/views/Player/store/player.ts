@@ -21,6 +21,13 @@ export const fetchCurrentSongAction = createAsyncThunk<
   if (playSongIndex === -1) {
     const response = await getSongDetail(id);
     if (!response.songs.length) return;
+
+    // add the song to the playSongList
+    const newPlaySongList = [...playSongList, response.songs[0]];
+    dispatch(changePlaySongListAction(newPlaySongList));
+    // update the playSongIndex to the last index
+    dispatch(changePlaySongIndexAction(newPlaySongList.length - 1));
+    // return the song
     return response.songs[0];
   } else {
     // if the song is in the playSongList, update the playSongIndex and return the song

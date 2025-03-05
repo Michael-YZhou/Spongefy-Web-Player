@@ -19,8 +19,8 @@ const Root: FC<IRoot> = () => {
   // fetch a song when app is mounted
   const dispatch = useAppDispatch();
   useEffect(() => {
-    dispatch(fetchCurrentSongAction(2645585433));
-    dispatch(fetchCurrentLyricAction(2645585433));
+    dispatch(fetchCurrentSongAction(38592976));
+    dispatch(fetchCurrentLyricAction(38592976));
   }, []);
 
   return (
