@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import stateBarBg from '@/assets/images/statbar.png';
 import sprite_icon from '@/assets/images/sprite_icon.png';
 import icon_pip from '@/assets/images/icon_pip.png';
+import { Interface } from 'readline';
 
 export const MusicWidgetWrapper = styled.div`
   position: fixed;
@@ -137,7 +138,11 @@ export const WidgetPlayInfo = styled.div`
   }
 `;
 
-export const WidgetOperator = styled.div`
+interface IWidgetOperator {
+  $playMode: number;
+}
+
+export const WidgetOperator = styled.div<IWidgetOperator>`
   display: flex;
   align-items: center;
   position: relative;
@@ -176,8 +181,17 @@ export const WidgetOperator = styled.div`
       background-position: -2px -248px;
     }
 
-    .loop {
-      background-position: -66px -248px;
+    .mode {
+      background-position: ${(props: IWidgetOperator) => {
+        switch (props.$playMode) {
+          case 0:
+            return '-3px -344px';
+          case 1:
+            return '-66px -344px';
+          default:
+            return '-66px -248px';
+        }
+      }};
     }
 
     .playlist {

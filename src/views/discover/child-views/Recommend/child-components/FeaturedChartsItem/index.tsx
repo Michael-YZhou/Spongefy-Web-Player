@@ -1,9 +1,11 @@
 import { memo } from 'react';
 import type { FC, ReactNode } from 'react';
+import { Link } from 'react-router-dom';
 import { FeaturedChartsItemWrapper } from './style';
 import { IPlaylist } from '../../type';
 import { formatImageSize } from '@/utils/format';
-import { Link } from 'react-router-dom';
+import { useAppDispatch } from '@/hooks/useAppDispach';
+import { fetchCurrentSongAction } from '@/views/Player/store/player';
 
 interface IProps {
   children?: ReactNode;
@@ -13,6 +15,12 @@ interface IProps {
 const FeaturedChartsItem: FC<IProps> = (props) => {
   const { itemData } = props;
   const { tracks = [] } = itemData;
+
+  const dispatch = useAppDispatch();
+
+  const handlePlayClick = (id: number) => {
+    dispatch(fetchCurrentSongAction(id));
+  };
 
   return (
     <FeaturedChartsItemWrapper>
@@ -40,7 +48,12 @@ const FeaturedChartsItem: FC<IProps> = (props) => {
               <div className="info">
                 <div className="name">{item.name}</div>
                 <div className="operator">
-                  <button className="btn sprite_02 play"></button>
+                  <button
+                    className="btn sprite_02 play"
+                    onClick={() => {
+                      handlePlayClick(item.id);
+                    }}
+                  ></button>
                   <button className="btn sprite_icon2 add"></button>
                   <button className="btn sprite_02 favor"></button>
                 </div>

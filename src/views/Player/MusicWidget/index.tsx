@@ -13,7 +13,11 @@ import { useAppSelector } from '@/hooks/useAppSelector';
 import { useAppDispatch } from '@/hooks/useAppDispach';
 import { formatImageSize, formatTime } from '@/utils/format';
 import { getSongPlayUrl } from '@/utils/playerUtils';
-import { changeLyricIndexAction } from '@/views/Player/store/player';
+import {
+  changeLyricIndexAction,
+  changePlayModeAction,
+  changeMusicAction,
+} from '@/views/Player/store/player';
 
 interface IProps {
   children?: ReactNode;
@@ -28,13 +32,15 @@ const MusicWidget: FC<IProps> = () => {
   const [isSliding, setIsSliding] = useState(false);
   const audioRef = useRef<HTMLAudioElement>(null);
 
+  // use antd message hook to show lyric
   const [messageApi, contextHolder] = message.useMessage();
 
-  const { currentSong, lyrics, lyricIndex } = useAppSelector(
+  const { currentSong, lyrics, lyricIndex, playMode } = useAppSelector(
     (state) => ({
       currentSong: state.player.currentSong,
       lyrics: state.player.lyrics,
       lyricIndex: state.player.lyricIndex,
+      playMode: state.player.playMode,
     }),
     shallowEqual,
   );
@@ -117,6 +123,22 @@ const MusicWidget: FC<IProps> = () => {
     setIsPlaying(!isPlaying);
   }
 
+  // handle change music
+  function handleChangeMusic(isNext = true) {
+    // change music
+    dispatch(changeMusicAction(isNext));
+  }
+
+  function HandleChangePlayMode() {
+    // change play mode
+    let newPlayMode = playMode + 1;
+    if (newPlayMode > 2) {
+      newPlayMode = 0;
+    }
+    // update play mode in store
+    dispatch(changePlayModeAction(newPlayMode));
+  }
+
   // handle slider when change (passes in the new slider value when sliding)
   function handleSliderChange(value: number) {
     setIsSliding(true); // user is sliding
@@ -143,12 +165,18 @@ const MusicWidget: FC<IProps> = () => {
     <MusicWidgetWrapper className="sprite_playbar">
       <div className="content wrap-v2">
         <WidgetPlayControl $isPlaying={isPlaying}>
-          <button className="btn sprite_playbar prev"></button>
+          <button
+            className="btn sprite_playbar prev"
+            onClick={() => handleChangeMusic(false)}
+          ></button>
           <button
             className="btn sprite_playbar play"
             onClick={handlePlayBtnClick}
           ></button>
-          <button className="btn sprite_playbar next"></button>
+          <button
+            className="btn sprite_playbar next"
+            onClick={() => handleChangeMusic(true)}
+          ></button>
         </WidgetPlayControl>
         <WidgetPlayInfo>
           <Link to="/player">
@@ -180,7 +208,7 @@ const MusicWidget: FC<IProps> = () => {
             </div>
           </div>
         </WidgetPlayInfo>
-        <WidgetOperator>
+        <WidgetOperator $playMode={playMode}>
           <div className="left">
             <button className="btn icon_pip"></button>
             <button className="btn sprite_playbar favor"></button>
@@ -188,7 +216,10 @@ const MusicWidget: FC<IProps> = () => {
           </div>
           <div className="right sprite_playbar">
             <button className="btn sprite_playbar volume"></button>
-            <button className="btn sprite_playbar loop"></button>
+            <button
+              className="btn sprite_playbar mode"
+              onClick={HandleChangePlayMode}
+            ></button>
             <button className="btn sprite_playbar playlist"></button>
           </div>
         </WidgetOperator>

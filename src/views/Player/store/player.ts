@@ -1,5 +1,5 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-import type { ISong, ILyricLine } from '@/views/Player/type';
+import type { ISong, ILyricLine, PlayMode } from '@/views/Player/type';
 import { getSongDetail, getSongLyric } from '../service/player';
 import { parseLyric } from '@/utils/parse-lyric';
 import type { RootStateType } from '@/store';
@@ -7,17 +7,21 @@ import type { RootStateType } from '@/store';
 import { songDetail01 } from '@/assets/data/api-data'; // replace this later with your api data
 import { songDetail02 } from '@/assets/data/api-data'; // replace this later with your api data
 
+interface IThunkState {
+  state: RootStateType;
+}
+
 // fetch current song information
 export const fetchCurrentSongAction = createAsyncThunk<
   ISong,
   number,
-  { state: RootStateType } // add the state type to the third argument
+  IThunkState // add the state type to the third argument
 >('player/fetchCurrentSong', async (id: number, { dispatch, getState }) => {
   // check if the song is already in the playSongList before fetching it
   const playSongList = getState().player.playSongList; // get state from the second argument
   const playSongIndex = playSongList.findIndex((song) => song.id === id);
   console.log(playSongIndex);
-  // if the song is not in the playSongList, fetch it from the server and return it
+  // if the song is not in the playSongList maintained in redux store, fetch it from the server and return it
   if (playSongIndex === -1) {
     const response = await getSongDetail(id);
     if (!response.songs.length) return;
@@ -51,12 +55,37 @@ export const fetchCurrentLyricAction = createAsyncThunk(
   },
 );
 
+export const changeMusicAction = createAsyncThunk<void, boolean, IThunkState>(
+  'player/changeMusic',
+  (isNext, { dispatch, getState }) => {
+    // get the current player data
+    const { playSongList, playSongIndex, playMode } = getState().player;
+
+    // calculate the next index based on the play mode
+    let nextIndex = playSongIndex;
+    if (playMode === 2) {
+      nextIndex = Math.floor(Math.random() * playSongList.length);
+    } else {
+      nextIndex = isNext
+        ? (playSongIndex + 1) % playSongList.length // keep the index in the range of the playSongList
+        : (playSongIndex - 1 + playSongList.length) % playSongList.length;
+    }
+
+    // get the next song from the playSongList using the nest index
+    const nextSong = playSongList[nextIndex];
+    dispatch(changeCurrentSongAction(nextSong));
+    // update the playSongIndex
+    dispatch(changePlaySongIndexAction(nextIndex));
+  },
+);
+
 interface IPlayerState {
   currentSong: ISong;
   lyrics: ILyricLine[];
   lyricIndex: number;
   playSongList: ISong[];
   playSongIndex: number;
+  playMode: PlayMode;
 }
 
 const initialState: IPlayerState = {
@@ -65,24 +94,32 @@ const initialState: IPlayerState = {
   lyricIndex: -1,
   playSongList: [songDetail01, songDetail02],
   playSongIndex: -1,
+  playMode: 0,
 };
 
 const playerSlice = createSlice({
   name: 'player',
   initialState: initialState,
   reducers: {
+    // record the current song being played
+    changeCurrentSongAction(state, { payload }) {
+      state.currentSong = payload;
+    },
     // record the index of the line of the lyric being played
     changeLyricIndexAction(state, { payload }) {
       state.lyricIndex = payload;
     },
     // record the index of the song being played
     changePlaySongIndexAction(state, { payload }) {
-      console.log(payload);
       state.playSongIndex = payload;
     },
     // update the playSongList
     changePlaySongListAction(state, { payload }) {
       state.playSongList = payload;
+    },
+    // change the play mode
+    changePlayModeAction(state, { payload }) {
+      state.playMode = payload;
     },
   },
   extraReducers: (builder) => {
@@ -113,9 +150,11 @@ const playerSlice = createSlice({
 
 // export actions
 export const {
+  changeCurrentSongAction,
   changeLyricIndexAction,
   changePlaySongIndexAction,
   changePlaySongListAction,
+  changePlayModeAction,
 } = playerSlice.actions;
 
 // export reducer to register in global store
