@@ -20,7 +20,6 @@ export const fetchCurrentSongAction = createAsyncThunk<
   // check if the song is already in the playSongList before fetching it
   const playSongList = getState().player.playSongList; // get state from the second argument
   const playSongIndex = playSongList.findIndex((song) => song.id === id);
-  console.log(playSongIndex);
   // if the song is not in the playSongList maintained in redux store, fetch it from the server and return it
   if (playSongIndex === -1) {
     const response = await getSongDetail(id);
@@ -76,6 +75,8 @@ export const changeMusicAction = createAsyncThunk<void, boolean, IThunkState>(
     dispatch(changeCurrentSongAction(nextSong));
     // update the playSongIndex
     dispatch(changePlaySongIndexAction(nextIndex));
+    // fetch the lyric of the next song
+    dispatch(fetchCurrentLyricAction(nextSong.id));
   },
 );
 

@@ -108,6 +108,18 @@ const MusicWidget: FC<IProps> = () => {
     });
   }
 
+  // handle when music ends
+  function HandleTimeEnded() {
+    // play next music when current music ends
+    if (playMode === 1) {
+      // repeat one
+      audioRef.current?.play();
+    } else {
+      // repeat all or shuffle
+      handleChangeMusic(true);
+    }
+  }
+
   /** handle events happen inside the component */
   // handle play button click
   function handlePlayBtnClick() {
@@ -227,7 +239,11 @@ const MusicWidget: FC<IProps> = () => {
       {/* display the lyric line in the message component */}
       {contextHolder}
       {/* audio element */}
-      <audio ref={audioRef} onTimeUpdate={handleTimeUpdate} />
+      <audio
+        ref={audioRef}
+        onTimeUpdate={handleTimeUpdate}
+        onEnded={HandleTimeEnded}
+      />
     </MusicWidgetWrapper>
   );
 };
