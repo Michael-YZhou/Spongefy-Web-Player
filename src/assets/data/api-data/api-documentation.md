@@ -258,3 +258,13 @@ By calling this API, you can retrieve recommended radio programs.
   - `plLevel`: 当前用户的该歌曲最高试听音质
   - `dlLevel`: 当前用户的该歌曲最高下载音质
   - `maxBrLevel`: 歌曲最高音质
+
+## 获取歌词
+
+说明 : 调用此接口 , 传入音乐 id 可获得对应音乐的歌词 ( 不需要登录 )
+
+**必选参数** : id: 音乐 id
+
+**接口地址** : /lyric
+
+**调用例子** : /lyric?id=33894312

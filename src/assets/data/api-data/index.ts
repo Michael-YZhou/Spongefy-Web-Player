@@ -10,6 +10,10 @@ import artistsListData from './api-artist-list.json';
 import podcastsListData from './api-program-recommend.json';
 import songDetailData01 from './api-song-detail-ids-2645585433.json';
 import songDetailData02 from './api-song-detail-ids-2644225034.json';
+import songDetailData03 from './api-song-detail-ids-38592976.json';
+import lyricData01 from './api-lyric-id-2645585433.json';
+import lyricData02 from './api-lyric-id-2644225034.json';
+import lyricData03 from './api-lyric-id-38592976.json';
 
 // Types for the data
 import type {
@@ -21,7 +25,7 @@ import type {
   IPodcast,
 } from '@/views/Discover/child-views/Recommend/type';
 
-import type { ISong } from '@/views/Player/type';
+import type { ISong, ILyricData } from '@/views/Player/type';
 
 // Export the data for the recommend page
 export const banners: IBannerData[] = bannerData.banners;
@@ -36,3 +40,7 @@ export const artistsList: IArtist[] = artistsListData.artists;
 export const podcastsList: IPodcast[] = podcastsListData.programs;
 export const songDetail01: ISong = songDetailData01.songs[0];
 export const songDetail02: ISong = songDetailData02.songs[0];
+export const songDetail03: ISong = songDetailData03.songs[0];
+export const lyric01: ILyricData = lyricData01;
+export const lyric02: ILyricData = lyricData02;
+export const lyric03: ILyricData = lyricData03;

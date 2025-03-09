@@ -4,8 +4,11 @@ import { getSongDetail, getSongLyric } from '../service/player';
 import { parseLyric } from '@/utils/parse-lyric';
 import type { RootStateType } from '@/store';
 
-import { songDetail01 } from '@/assets/data/api-data'; // replace this later with your api data
-import { songDetail02 } from '@/assets/data/api-data'; // replace this later with your api data
+import {
+  songDetail01,
+  songDetail02,
+  songDetail03,
+} from '@/assets/data/api-data'; // replace this later with your api data
 
 interface IThunkState {
   state: RootStateType;
@@ -93,7 +96,7 @@ const initialState: IPlayerState = {
   currentSong: {},
   lyrics: [],
   lyricIndex: -1,
-  playSongList: [songDetail01, songDetail02],
+  playSongList: [songDetail01, songDetail02, songDetail03],
   playSongIndex: -1,
   playMode: 0,
 };
