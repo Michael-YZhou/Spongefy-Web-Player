@@ -8,7 +8,7 @@ import { HeaderWrapper, HeaderLeft, HeaderRight } from './style';
 // import { rootRoute } from '../routes';
 
 import { Link, NavLink } from 'react-router-dom';
-// import logo from '@/assets/images/logo.svg';
+import logoImg from '@/assets/images/logo.svg';
 import headerTitles from '@/assets/data/header-titles.json';
 
 interface IHeader {
@@ -25,7 +25,9 @@ const Header: FC<IHeader> = () => {
       return (
         <NavLink to={item.link}>
           {item.title}
-          <i className="icon sprite_01"></i>
+          <i className="icon ">
+            <div className="triangle-up"></div>
+          </i>
         </NavLink>
       );
     } else {
@@ -42,8 +44,9 @@ const Header: FC<IHeader> = () => {
       <div className="content wrap-v1">
         <HeaderLeft>
           {/* <Navigation routes={routes} /> */}
-          <Link className="logo" to="/">
-            {/* <img src={logo} alt="logo" className="logo" /> */}
+          <Link className="logo-box" to="/">
+            <img src={logoImg} alt="logo img" className="logo-img" />
+            <div className="logo-text">Spongefy</div>
           </Link>
           <div className="title-list">
             {headerTitles.map((item) => {

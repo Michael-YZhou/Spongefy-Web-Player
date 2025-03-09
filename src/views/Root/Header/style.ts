@@ -4,7 +4,7 @@ import sprite01Img from '@/assets/images/sprite_01.png';
 export const HeaderWrapper = styled.div`
   height: 75px;
   /* background-color: #f7e948; */
-  background-color: #242424;
+  /* background-color: ${(props) => props.theme.color.mainHeaderBg}; */
   font-size: 14px;
   /* color: #333; */
   color: #fff;
@@ -16,21 +16,38 @@ export const HeaderWrapper = styled.div`
 
   .divider {
     height: 5px;
-    background-color: #c20c0c;
+    /* background-color: #c20c0c; */
+    background-color: ${(props) => props.theme.color.subHeaderBg};
   }
 `;
 
 export const HeaderLeft = styled.div`
   display: flex;
 
-  .logo {
-    display: block;
-    width: 176px;
-    height: 70px;
-    background-image: url(${sprite01Img});
+  .logo-box {
+    margin-right: 40px;
+    display: flex;
+    .logo-img {
+      display: block;
+      width: 50px;
+      height: 40px;
+      margin: 15px 0;
+      padding: 4px;
+      /* background-image: url(${sprite01Img});
     background-position: 0 0;
-    /* background-color: #f7e948; */
-    text-indent: -9999px;
+    text-indent: -9999px; */
+      background-color: ${(props) => props.theme.color.subHeaderBg};
+      border-radius: 10px;
+    }
+
+    .logo-text {
+      margin: 0 10px;
+      width: 80px;
+      text-align: center;
+      line-height: 70px;
+      font-size: 24px;
+      color: #fff;
+    }
   }
 
   .title-list {
@@ -80,6 +97,14 @@ export const HeaderLeft = styled.div`
         border-radius: 15px 15px 0 0px;
         transform: translate(-50%, 0);
         background-position: -227px 0;
+
+        .triangle-up {
+          width: 0;
+          height: 0;
+          border-left: 6px solid transparent;
+          border-right: 6px solid transparent;
+          border-bottom: 6px solid ${(props) => props.theme.color.subHeaderBg}; /* Yellow triangle */
+        }
       }
     }
   }

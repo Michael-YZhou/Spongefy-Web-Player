@@ -10,8 +10,8 @@ export const FeaturedChartsItemWrapper = styled.div`
   .header {
     height: 100px;
     display: flex;
-
     margin: 20px 0 0 20px;
+    background-color: #242424;
 
     .image {
       width: 80px;
@@ -30,25 +30,33 @@ export const FeaturedChartsItemWrapper = styled.div`
       .name {
         font-size: 14px;
         font-weight: 700;
-        color: #333;
+        /* color: #333; */
+        color: #ccc;
       }
 
       a {
         font-size: 14px;
-        color: #333;
+        /* color: #333; */
+        color: #fff;
         font-weight: 700;
       }
 
       .btn {
         display: inline-block;
-        text-indent: -9999px;
+        /* text-indent: -9999px; */
         width: 22px;
         height: 22px;
         margin: 8px 10px 0 0;
         cursor: pointer;
+        font-size: 22px;
+        color: #ccc;
+
+        &:hover {
+          color: #fff;
+        }
       }
 
-      .play {
+      /* .play {
         background-position: -267px -205px;
 
         &:hover {
@@ -62,7 +70,7 @@ export const FeaturedChartsItemWrapper = styled.div`
         &:hover {
           background-position: -300px -235px;
         }
-      }
+      } */
     }
   }
 
@@ -72,6 +80,11 @@ export const FeaturedChartsItemWrapper = styled.div`
       display: flex;
       align-items: center;
       height: 32px;
+      background-color: #242424;
+
+      &:nth-child(odd) {
+        background-color: #1a1a1a; /* Different background color for odd-indexed items */
+      }
 
       &:nth-child(-n + 3) .rank {
         color: #c10d0c;
@@ -85,7 +98,8 @@ export const FeaturedChartsItemWrapper = styled.div`
       }
 
       .info {
-        color: #000;
+        /* color: #000; */
+        color: #ccc;
         width: 170px;
         height: 17px;
         line-height: 17px;
@@ -110,15 +124,21 @@ export const FeaturedChartsItemWrapper = styled.div`
           align-items: center;
           display: none;
           width: 82px;
+          font-size: 17px;
+          color: #ccc;
 
           .btn {
             width: 17px;
             height: 17px;
             margin-left: 8px;
             cursor: pointer;
+
+            &:hover {
+              color: #fff;
+            }
           }
 
-          .play {
+          /* .play {
             background-position: -267px -268px;
 
             &:hover {
@@ -142,7 +162,7 @@ export const FeaturedChartsItemWrapper = styled.div`
             &:hover {
               background-position: -297px -288px;
             }
-          }
+          } */
         }
 
         &:hover {

@@ -7,6 +7,9 @@ export const FeaturedChartsWrapper = styled.div`
 
     height: 472px;
     margin-top: 20px;
-    background-image: url(${FeaturedChardsBg});
+    /* background-image: url(${FeaturedChardsBg}); */
+    background-color: #242424;
+    /* border: 1px solid #242424; */
+    /* border-radius: 10px; */
   }
 `;

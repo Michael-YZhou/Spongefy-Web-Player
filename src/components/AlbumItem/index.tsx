@@ -3,6 +3,7 @@ import type { FC, ReactNode } from 'react';
 import { AlbumItemWrapper } from './style';
 import type { INewAlbumData } from '@/views/Discover/child-views/Recommend/type';
 import { formatImageSize } from '@/utils/format';
+import { Link } from 'react-router-dom';
 
 interface IProps {
   children?: ReactNode;
@@ -15,7 +16,7 @@ const AlbumItem: FC<IProps> = (props) => {
     <AlbumItemWrapper>
       <div className="album-image">
         <img src={formatImageSize(itemData.picUrl, 100)} alt={itemData.name} />
-        <a href="" className="sprite_cover cover"></a>
+        <Link to="/discover/album" className="sprite_cover cover"></Link>
       </div>
       <div className="album-info">
         <div className="name">{itemData.name}</div>

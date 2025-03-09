@@ -22,6 +22,7 @@ const SectionHeaderV1: FC<IProps> = (props) => {
   return (
     <SectionHeaderV1Wrapper className="sprite_02">
       <div className="left">
+        <div className="circle"></div>
         <h2 className="title">{title}</h2>
         <div className="keywords">
           {keywords.map((item) => {
@@ -38,7 +39,9 @@ const SectionHeaderV1: FC<IProps> = (props) => {
         <Link className="more" to={moreLink}>
           {moreText}
         </Link>
-        <i className="icon sprite_02"></i>
+        <i className="icon">
+          <strong>&gt;</strong>
+        </i>
       </div>
     </SectionHeaderV1Wrapper>
   );

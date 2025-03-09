@@ -1,9 +1,15 @@
 const theme = {
   color: {
-    primary: '#C20C0C',
-    secondary: '#ff0080',
-    background: '#f0f0f0',
+    mainHeaderBg: '#242424',
+    // subHeaderBg: '#c20c0c',
+    // subHeaderActivate: '#9b0909',
+    // sectionHeaderDivider: '#c10d0c',
+    // background: '#f5f5f5',
     text: '#333',
+    subHeaderBg: '#f7e948',
+    subHeaderActivate: '#ffb700',
+    sectionHeaderDivider: '#ffdd00',
+    background: '#242424',
   },
   size: {},
   mixin: {

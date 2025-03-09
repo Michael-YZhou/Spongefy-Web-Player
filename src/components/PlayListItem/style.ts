@@ -54,7 +54,8 @@ export const PlayListItemWrapper = styled.div`
 
   .cover-bottom {
     font-size: 14px;
-    color: #000;
+    /* color: #000; */
+    color: #ccc;
     margin-top: 5px;
   }
 `;

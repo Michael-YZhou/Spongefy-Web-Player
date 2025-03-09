@@ -10,12 +10,10 @@ interface IProps {
 
 const Login: FC<IProps> = () => {
   return (
-    <LoginWrapper className="sprite_02">
+    <LoginWrapper>
       <p>Already have an account?</p>
       <p>Log in here.</p>
-      <Link to="#/login" className="sprite_02">
-        User Login
-      </Link>
+      <Link to="#/login">User Login</Link>
     </LoginWrapper>
   );
 };

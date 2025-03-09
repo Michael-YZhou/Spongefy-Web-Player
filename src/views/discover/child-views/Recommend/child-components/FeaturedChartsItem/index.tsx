@@ -6,6 +6,11 @@ import { IPlaylist } from '../../type';
 import { formatImageSize } from '@/utils/format';
 import { useAppDispatch } from '@/hooks/useAppDispach';
 import { fetchCurrentSongAction } from '@/views/Player/store/player';
+import {
+  PlayCircleOutlined,
+  PlusOutlined,
+  FolderAddOutlined,
+} from '@ant-design/icons';
 
 interface IProps {
   children?: ReactNode;
@@ -35,8 +40,10 @@ const FeaturedChartsItem: FC<IProps> = (props) => {
         <div className="info">
           <div className="name">{itemData.name}</div>
           <div>
-            <button className="sprite_02 btn play"></button>
-            <button className="sprite_02 btn favor"></button>
+            {/* <button className="sprite_02 btn play"></button>
+            <button className="sprite_02 btn favor"></button> */}
+            <PlayCircleOutlined className="btn play" />
+            <FolderAddOutlined className="btn favor" />
           </div>
         </div>
       </div>
@@ -48,14 +55,32 @@ const FeaturedChartsItem: FC<IProps> = (props) => {
               <div className="info">
                 <div className="name">{item.name}</div>
                 <div className="operator">
-                  <button
+                  {/* <button
                     className="btn sprite_02 play"
                     onClick={() => {
                       handlePlayClick(item.id);
                     }}
                   ></button>
                   <button className="btn sprite_icon2 add"></button>
-                  <button className="btn sprite_02 favor"></button>
+                  <button className="btn sprite_02 favor"></button> */}
+                  <PlayCircleOutlined
+                    className="btn play"
+                    onClick={() => {
+                      handlePlayClick(item.id);
+                    }}
+                  />
+                  <PlusOutlined
+                    className="btn add"
+                    onClick={() => {
+                      handlePlayClick(item.id);
+                    }}
+                  />
+                  <FolderAddOutlined
+                    className="btn favor"
+                    onClick={() => {
+                      handlePlayClick(item.id);
+                    }}
+                  />
                 </div>
               </div>
             </div>

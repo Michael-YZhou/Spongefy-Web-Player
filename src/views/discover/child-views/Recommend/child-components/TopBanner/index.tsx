@@ -6,6 +6,8 @@ import classNames from 'classnames';
 import { Carousel } from 'antd';
 import type { CarouselRef } from 'antd/es/carousel';
 import { BannerControl, BannerLeft, BannerRight, BannerWrapper } from './style';
+import spongebobSingingImg from '@/assets/images/spongebob-singing.png';
+import { Link } from 'react-router-dom';
 
 interface IProps {
   children?: ReactNode;
@@ -93,7 +95,17 @@ const TopBanner: FC<IProps> = () => {
           </ul>
         </BannerLeft>
         <BannerRight>
-          <span className="download-text">PC Android iPhone WP iPad Mac</span>
+          <img
+            src={spongebobSingingImg}
+            alt="spongebob singing image"
+            className="singing-gif"
+          />
+          <Link to="/download" className="download-text">
+            <div>
+              <strong>Download Now</strong>
+            </div>
+            <div>PC Android iPhone WP iPad Mac</div>
+          </Link>
         </BannerRight>
         <BannerControl>
           <button

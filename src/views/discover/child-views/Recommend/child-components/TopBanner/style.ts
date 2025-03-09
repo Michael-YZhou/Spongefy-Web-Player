@@ -50,22 +50,36 @@ export const BannerLeft = styled.div`
   }
 `;
 
-export const BannerRight = styled.a.attrs({
-  href: 'https://music.163.com/#/download',
-  target: '_blank',
-})`
+export const BannerRight = styled.div`
   width: 250px;
   height: 270px;
-  background: url(${downloadImg});
+  background: radial-gradient(
+    circle,
+    rgba(120, 120, 120, 1) 10%,
+    rgba(60, 60, 60, 1) 50%,
+    rgba(30, 30, 30, 1) 100%
+  );
+  /* background: url(${downloadImg});
   background-size: cover;
-  background-position: 0 -40px;
+  background-position: 0 -40px; */
+
+  .singing-gif {
+    display: block;
+    margin: 20px auto 0; /* 50px space on top, auto centers horizontally */
+    max-height: 70%; /* Ensures responsiveness */
+  }
 
   .download-text {
     display: block;
     width: 250px;
-    color: #8d8d8d;
+    /* color: #8d8d8d; */
+    color: #ccc;
     text-align: center;
-    margin-top: 244px;
+    margin-top: 10px;
+
+    &:hover {
+      color: #fff;
+    }
   }
 `;
 

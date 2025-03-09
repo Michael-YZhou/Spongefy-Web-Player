@@ -191,7 +191,7 @@ const MusicWidget: FC<IProps> = () => {
           ></button>
         </WidgetPlayControl>
         <WidgetPlayInfo>
-          <Link to="/player">
+          <Link to="/discover/playlist">
             <img
               className="image"
               src={formatImageSize(currentSong?.al?.picUrl, 50)}

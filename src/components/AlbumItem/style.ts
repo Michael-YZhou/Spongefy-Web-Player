@@ -28,7 +28,8 @@ export const AlbumItemWrapper = styled.div`
     font-size: 12px;
     width: 100px;
     .name {
-      color: #000;
+      /* color: #000; */
+      color: #ccc;
       ${(props) => props.theme.mixin.textNoWrap}
     }
 
