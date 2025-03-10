@@ -29,6 +29,10 @@ Experience the app live at: [https://spongefy-web-player.onrender.com](https://s
 - **UI Library:** Antd for UI components and icon library
 - **Node Version:** 22.13.0
 
+## Data Fetching
+
+Spongefy wraps Axios to provide custom APIs for data fetching. Global interceptors and per-request interceptors are implemented for these custom APIs.
+
 ## Installation and Setup
 
 ### Prerequisites
