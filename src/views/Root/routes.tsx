@@ -1,8 +1,8 @@
 import { IRoute } from '@/services/routing/RoutingService';
-import { discoverRoute } from '@/views/Discover/routes';
-import { collectionRoute } from '@/views/Collection/routes';
-import { follownRoute } from '@/views/Follow/routes';
-import { downloadRoute } from '@/views/Download/routes';
+import { discoverRoute } from '@/views/Temp-Discover/routes';
+import { collectionRoute } from '@/views/Temp-Collection/routes';
+import { follownRoute } from '@/views/Temp-Follow/routes';
+import { downloadRoute } from '@/views/Temp-Download/routes';
 import Root from '.';
 import { Navigate } from 'react-router-dom';
 

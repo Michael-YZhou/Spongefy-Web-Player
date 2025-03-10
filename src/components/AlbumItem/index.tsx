@@ -1,7 +1,7 @@
 import { memo } from 'react';
 import type { FC, ReactNode } from 'react';
 import { AlbumItemWrapper } from './style';
-import type { INewAlbumData } from '@/views/Discover/child-views/Recommend/type';
+import type { INewAlbumData } from '@/views/Temp-Discover/child-views/Recommend/type';
 import { formatImageSize } from '@/utils/format';
 import { Link } from 'react-router-dom';
 

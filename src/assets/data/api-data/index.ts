@@ -23,7 +23,7 @@ import type {
   IFeaturedChartData,
   IArtist,
   IPodcast,
-} from '@/views/Discover/child-views/Recommend/type';
+} from '@/views/Temp-Discover/child-views/Recommend/type';
 
 import type { ISong, ILyricData } from '@/views/Player/type';
 

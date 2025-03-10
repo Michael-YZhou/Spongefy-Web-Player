@@ -1,6 +1,6 @@
 import { memo } from 'react';
 import type { FC, ReactNode } from 'react';
-import type { IPopularAlbumData } from '@/views/Discover/child-views/Recommend/type';
+import type { IPopularAlbumData } from '@/views/Temp-Discover/child-views/Recommend/type';
 import { PlayListItemWrapper } from './style';
 import { formatCount, formatImageSize } from '@/utils/format';
 
