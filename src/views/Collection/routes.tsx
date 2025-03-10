@@ -2,12 +2,12 @@ import { lazy } from 'react';
 import { IRoute } from '@/services/routing/RoutingService';
 
 // Lazy-load parent and child components
-const Follow = lazy(() => import('@/views/Temp-Follow'));
+const Collection = lazy(() => import('@/views/Collection'));
 
 // Define and export the collection route
-export const follownRoute: IRoute = {
-  path: '/follow',
-  element: <Follow />,
+export const collectionRoute: IRoute = {
+  path: '/collection',
+  element: <Collection />,
   isPrivate: true,
-  label: 'Follow',
+  label: 'Collection',
 };
