@@ -1,58 +1,73 @@
-# React + TypeScript + Vite
+# Spongefy Web Player
 
-Recommended Code Editor:
-VS Code
+Spongefy Web Player is a modern React and TypeScript web application built using Vite that offers an engaging interface to explore music through sections like **Popular Albums and Singles**, **New Albums**, and **Featured Charts**. It also features a music widget based on the HTML audio element for seamless audio playback, and leverages Redux to maintain and manage user playlists.
 
-Recomended VS Code extensions:
-EditorConfig
-ESLint
-Prettier
+## Screenshot
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+![Screenshot of Spongefy Web Player](./public/spongefy-web-player.png)
 
-Currently, two official plugins are available:
+## Live Demo
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Experience the app live at: [https://spongefy-web-player.onrender.com](https://spongefy-web-player.onrender.com)
 
-## Expanding the ESLint configuration
+## Features
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+- **Popular Albums and Singles:** Discover trending music.
+- **New Albums:** Stay updated with the latest music releases.
+- **Featured Charts:** Browse through curated music charts.
+- **Music Widget:** Enjoy seamless playback with the integrated music widget.
+- **Playlist Management:** Manage your personal playlist powered by Redux.
+- **Open Source Music Data:** Fetches data from an open source API (note: some tracks may be unavailable due to copyright or regional restrictions).
 
-- Configure the top-level `parserOptions` property like this:
+## Tech Stack
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-});
-```
+- **Frontend:** React, TypeScript
+- **Build Tool:** Vite
+- **State Management:** Redux
+- **CSS Pre-processor:** Less
+- **Styling:** Styled Components
+- **UI Library:** Antd for UI components and icon library
+- **Node Version:** 22.13.0
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+## Installation and Setup
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react';
+### Prerequisites
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-});
-```
+- [Node.js](https://nodejs.org/) version **22.13.0** (or compatible) installed.
+- npm (comes bundled with Node.js).
+
+### Steps
+
+1. **Clone the Repository:**
+
+   ```bash
+   git clone https://github.com/Michael-YZhou/Spongefy-Web-Player.git
+   cd Spongefy-Web-Player
+   ```
+
+2. **Install Dependencies:**
+
+   ```bash
+   npm install
+   ```
+
+3. **Run the App in Development Mode:**
+
+   ```bash
+   npm run dev
+   ```
+
+4. **Building for Production:**
+
+   To create a production-ready build:
+
+   ```bash
+   npm run build
+   ```
+
+   After building, you can preview the production build locally:
+
+   ```bash
+   npm run preview
+   ```
+
