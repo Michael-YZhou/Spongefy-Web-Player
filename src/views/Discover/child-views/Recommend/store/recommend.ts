@@ -19,7 +19,8 @@ import {
 // create an async thunk to fetch the banner data
 export const fetchBannerDataAction = createAsyncThunk(
   'recommend/fetchBannerData',
-  async (arg, { dispatch }) => {
+  async (_arg) => {
+    // can extract the dispatch function from the second argument { dispatch } to dispatch other actions such as exported reducer actions
     const res = await getBanners();
     return res.banners;
   },
@@ -27,7 +28,7 @@ export const fetchBannerDataAction = createAsyncThunk(
 
 export const fetchPopularAlbumsAction = createAsyncThunk(
   'recommend/fetchPopularAlbums',
-  async (arg, { dispatch }) => {
+  async (_arg) => {
     const res = await getPopularAlbums(8);
     return res.result;
   },
@@ -35,7 +36,7 @@ export const fetchPopularAlbumsAction = createAsyncThunk(
 
 export const fetchNewAlbumsAction = createAsyncThunk(
   'recommend/fetchNewAlbums',
-  async (arg, { dispatch }) => {
+  async (_arg) => {
     const res = await getNewAlbums();
     return res.albums;
   },
@@ -44,7 +45,7 @@ export const fetchNewAlbumsAction = createAsyncThunk(
 const chartIds = [19723756, 3779629, 2884035];
 export const fetchFeaturedChartsAction = createAsyncThunk(
   'recommend/fetchFeaturedCharts',
-  async (arg, { dispatch }) => {
+  async (_arg) => {
     // promise.all to fetch all the featured charts with correct order
     const playlists = await Promise.all(
       chartIds.map((id) => getPlayListDetail(id).then((res) => res!.playlist)),
@@ -55,7 +56,7 @@ export const fetchFeaturedChartsAction = createAsyncThunk(
 
 export const fetchArtistsListAction = createAsyncThunk(
   'recommend/fetchArtistsList',
-  async (arg, { dispatch }) => {
+  async (_arg) => {
     const res = await getArtistsList(-1, 96, 5);
     return res.artists;
   },
@@ -63,7 +64,7 @@ export const fetchArtistsListAction = createAsyncThunk(
 
 export const fetchPodcastsListAction = createAsyncThunk(
   'recommend/fetchPodcastsList',
-  async (arg, { dispatch }) => {
+  async (_arg) => {
     const res = await getPodcastsList(10);
     return res.programs;
   },

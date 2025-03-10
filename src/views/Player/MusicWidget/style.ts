@@ -2,7 +2,6 @@ import styled from 'styled-components';
 import stateBarBg from '@/assets/images/statbar.png';
 import sprite_icon from '@/assets/images/sprite_icon.png';
 import icon_pip from '@/assets/images/icon_pip.png';
-import { Interface } from 'readline';
 
 export const MusicWidgetWrapper = styled.div`
   position: fixed;

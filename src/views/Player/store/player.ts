@@ -129,24 +129,24 @@ const playerSlice = createSlice({
   extraReducers: (builder) => {
     builder
       // fetch current song information
-      .addCase(fetchCurrentSongAction.pending, (state, action) => {
+      .addCase(fetchCurrentSongAction.pending, (_state, _action) => {
         console.log('fetch Current Song pending');
       })
       .addCase(fetchCurrentSongAction.fulfilled, (state, action) => {
         console.log('fetch Current Song fulfilled');
         state.currentSong = action.payload;
       })
-      .addCase(fetchCurrentSongAction.rejected, (state, action) => {
+      .addCase(fetchCurrentSongAction.rejected, (_state, _action) => {
         console.log('fetch Current Song rejected');
       })
-      .addCase(fetchCurrentLyricAction.pending, (state, action) => {
+      .addCase(fetchCurrentLyricAction.pending, (_state, _action) => {
         console.log('fetch Current Lyric pending');
       })
       .addCase(fetchCurrentLyricAction.fulfilled, (state, action) => {
         console.log('fetch Current Lyric fulfilled');
         state.lyrics = action.payload;
       })
-      .addCase(fetchCurrentLyricAction.rejected, (state, action) => {
+      .addCase(fetchCurrentLyricAction.rejected, (_state, _action) => {
         console.log('fetch Current Lyric rejected');
       });
   },

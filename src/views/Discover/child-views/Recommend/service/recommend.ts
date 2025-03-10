@@ -1,4 +1,4 @@
-import { httpClient } from '@/services/http/HttpService';
+// import { httpClient } from '@/services/http/HttpService';
 
 // API is too slow, use the local data from the api-data folder instead
 import {
@@ -56,6 +56,7 @@ export function getArtistsList(type: number, area: number, limit = 30) {
   //     limit,
   //   },
   // });
+  console.log('remove this clg when using API: ', type, area, limit); // remove this line when using the API
   return Promise.resolve({ artists: artistsList.slice(0, limit) });
 }
 
